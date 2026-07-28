@@ -1,414 +1,1454 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PEAK STUDIO — 브랜드를 정점으로</title>
-  <meta name="description" content="피크 스튜디오는 마케팅, 브랜딩, 촬영, 상세페이지 제작 등 종합 크리에이티브 서비스를 제공합니다.">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>피크 스튜디오 | 매출 300% 성과로 이어지는 크라우드펀딩 상세페이지</title>
+  <meta name="description" content="피크 스튜디오는 와디즈 공식 파트너사로, 뷰티·푸드·테크·홈리빙 등 다양한 카테고리의 크라우드펀딩 상세페이지를 제작합니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ──────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ── HEADER ────────────────────────────────────────── */
+    #site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      height: 60px;
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 36px;
+      transition: box-shadow .3s;
+    }
+    #site-header.shadow { box-shadow: 0 2px 16px rgba(0,0,0,0.08); }
+
+    .h-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .h-logo img {
+      width: 36px; height: 36px;
+      object-fit: contain;
+    }
+
+    .h-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .h-nav a {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      transition: color .2s;
+    }
+    .h-nav a:hover, .h-nav a.active { color: #111; font-weight: 600; }
+
+    .h-cta {
+      margin-left: auto;
+      background: #ff5500;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 20px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: background .2s, transform .2s;
+    }
+    .h-cta:hover { background: #e64c00; transform: translateY(-1px); }
+    .h-cta svg { width: 14px; height: 14px; fill: #fff; flex-shrink: 0; }
+
+    /* ── HERO SLIDER ───────────────────────────────────── */
+    #hero {
+      margin-top: 60px;
+      width: 100%;
+      height: calc(100vh - 60px);
+      min-height: 420px;
+      max-height: 680px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Slides container */
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      transition: transform .7s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* Each slide fills full width */
+    .hero-slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 3-panel inner grid for each slide */
+    .slide-panels {
+      display: grid;
+      grid-template-columns: 45% 30% 25%;
+      height: 100%;
+      width: 100%;
+    }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 8s ease;
+    }
+    .hero-slide:hover .panel-img { transform: scale(1.04); }
+
+    .panel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.6) 100%);
+      pointer-events: none;
+    }
+
+    /* Main panel (first) has the big headline */
+    .panel-main-text {
+      position: absolute;
+      bottom: 48px;
+      left: 36px;
+      right: 16px;
+      z-index: 2;
+      color: #fff;
+    }
+    .panel-eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 10px;
+    }
+    .panel-headline {
+      font-size: clamp(22px, 2.8vw, 38px);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    /* Side panel (2nd/3rd) has a small label */
+    .panel-side-text {
+      position: absolute;
+      bottom: 40px;
+      left: 20px;
+      right: 12px;
+      z-index: 2;
+      color: #fff;
+    }
+    .panel-side-label {
+      font-size: clamp(14px, 1.8vw, 20px);
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+    .panel-side-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+      margin-top: 4px;
+    }
+
+    /* Slide nav dots */
+    .hero-dots {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 7px;
+      z-index: 10;
+    }
+    .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.4);
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .dot.active { background: #fff; transform: scale(1.3); }
+
+    /* Slide arrows */
+    .hero-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .hero-arrow:hover { background: rgba(255,255,255,.3); }
+    .hero-arrow svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
+    .hero-arrow.prev { left: 20px; }
+    .hero-arrow.next { right: 20px; }
+
+    /* ── STATS SECTION ─────────────────────────────────── */
+    #stats {
+      padding: 72px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .stats-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 36px;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+    .stats-left {
+      flex: 1;
+    }
+    .stats-left .sub {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .stats-left h2 {
+      font-size: clamp(22px, 2.5vw, 34px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      color: #111;
+    }
+    .stats-right {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      flex-shrink: 0;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 6px;
+      white-space: nowrap;
+    }
+    .stat-num {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      color: #111;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .stat-num span {
+      color: #ff5500;
+    }
+
+    /* ── LOGO MARQUEE ──────────────────────────────────── */
+    #logos {
+      padding: 44px 0;
+      overflow: hidden;
+      border-bottom: 1px solid #eee;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 56px;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      height: 36px;
+      opacity: .55;
+      transition: opacity .2s;
+      filter: grayscale(1);
+    }
+    .logo-item:hover { opacity: 1; filter: grayscale(0); }
+    .logo-item img { height: 28px; width: auto; object-fit: contain; }
+    .logo-text {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #333;
+      white-space: nowrap;
+    }
+
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── FEATURED CARD SECTION ─────────────────────────── */
+    #featured {
+      padding: 80px 0 100px;
+    }
+    .featured-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 36px;
+    }
+    .featured-card {
+      background: #f3f3f1;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: box-shadow .3s;
+    }
+    .featured-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,.1); }
+
+    .featured-visual {
+      height: 340px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Blob accent */
+    .featured-blob {
+      position: absolute;
+      width: 340px; height: 280px;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.75;
+    }
+
+    .featured-brand-name {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(36px, 5vw, 72px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #111;
+    }
+
+    .featured-info {
+      padding: 28px 32px 32px;
+    }
+    .featured-title {
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 800;
+      color: #111;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .featured-desc {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.75;
+      max-width: 620px;
+    }
+
+    /* ── PORTFOLIO SECTION ─────────────────────────────── */
+    #portfolio {
+      background: #f7f7f7;
+      padding: 80px 0;
+    }
+    .section-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 36px;
+    }
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      color: #ff5500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(22px, 3vw, 40px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #111;
+      margin-bottom: 40px;
+    }
+
+    /* Category tabs */
+    .cat-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .cat-btn {
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1.5px solid #ddd;
+      color: #666;
+      background: #fff;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .cat-btn:hover { border-color: #ff5500; color: #ff5500; }
+    .cat-btn.active {
+      background: #ff5500;
+      border-color: #ff5500;
+      color: #fff;
+    }
+
+    /* Cards horizontal scroll */
+    .cards-scroll {
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      margin: 0 -36px;
+      padding: 0 36px 8px;
+    }
+    .cards-scroll::-webkit-scrollbar { display: none; }
+
+    .cards-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+    }
+
+    .proj-card {
+      width: 260px;
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid #eee;
+      transition: transform .3s, box-shadow .3s;
+      cursor: pointer;
+    }
+    .proj-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.1);
+    }
+    .proj-card-img {
+      width: 100%; height: 165px;
+      object-fit: cover;
+      background: #eee;
+    }
+    .proj-card-body {
+      padding: 16px 18px 18px;
+    }
+    .proj-card-cat {
+      font-size: 11px;
+      font-weight: 700;
+      color: #ff5500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .proj-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #111;
+      line-height: 1.45;
+      margin-bottom: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .proj-card-link {
+      font-size: 12px;
+      font-weight: 600;
+      color: #ff5500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap .2s;
+    }
+    .proj-card:hover .proj-card-link { gap: 8px; }
+
+    .cat-panel { display: none; }
+    .cat-panel.active { display: block; }
+
+    /* ── ABOUT SECTION ─────────────────────────────────── */
+    #about {
+      padding: 96px 0;
+      background: #fff;
+    }
+    .about-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-left h2 {
+      font-size: clamp(22px, 2.8vw, 38px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .about-left p {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.8;
+    }
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .about-item {
+      display: flex;
+      gap: 18px;
+    }
+    .about-num {
+      font-size: 12px;
+      font-weight: 800;
+      color: #ff5500;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+    .about-item h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .about-item p {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.65;
+    }
+
+    /* ── SERVICES SECTION ──────────────────────────────── */
+    #services {
+      background: #111;
+      padding: 96px 0;
+    }
+    .services-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 36px;
+    }
+    .services-wrap .section-title { color: #fff; }
+
+    .svc-list {
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .svc-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .svc-item:hover { opacity: .7; }
+    .svc-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .svc-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: #ff5500;
+      letter-spacing: .05em;
+    }
+    .svc-name {
+      font-size: clamp(15px, 1.8vw, 22px);
+      font-weight: 700;
+      color: #fff;
+    }
+    .svc-arrow {
+      color: #ff5500;
+      font-size: 18px;
+      transition: transform .2s;
+    }
+    .svc-item:hover .svc-arrow { transform: translate(4px,-4px); }
+
+    /* ── CTA SECTION ───────────────────────────────────── */
+    #cta {
+      background: #111;
+      padding: 96px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 36px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+    .cta-content {
+      max-width: 580px;
+      position: relative;
+      z-index: 2;
+    }
+    .cta-watermark {
+      position: absolute;
+      left: 0; bottom: -40px;
+      font-size: clamp(60px, 10vw, 140px);
+      font-weight: 900;
+      color: rgba(255,255,255,.03);
+      letter-spacing: -0.05em;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .cta-content h2 {
+      font-size: clamp(24px, 3.5vw, 44px);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+    .cta-content p {
+      font-size: 15px;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .btn-orange {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ff5500;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 100px;
+      transition: background .2s, transform .2s;
+    }
+    .btn-orange:hover { background: #e64c00; transform: translateY(-2px); }
+
+    /* QR Code Card */
+    .cta-qr-card {
+      position: relative;
+      z-index: 2;
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex-shrink: 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      transition: transform .3s, border-color .3s;
+    }
+    .cta-qr-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,85,0,0.5);
+    }
+    .cta-qr-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 10px;
+      background: #fff;
+      padding: 8px;
+      margin-bottom: 12px;
+    }
+    .cta-qr-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .cta-qr-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ── FOOTER ────────────────────────────────────────── */
+    #footer {
+      background: #0d0d0d;
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 48px 36px 36px;
+    }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+    .footer-col-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 12px;
+    }
+    .footer-col-text {
+      font-size: 13px;
+      color: rgba(255,255,255,.55);
+      line-height: 1.8;
+    }
+    .footer-bottom {
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,.25);
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-logo img { width: 24px; height: 24px; object-fit: contain; opacity: .7; }
+    .footer-logo span { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.3); }
+
+    /* ── ANIMATIONS & UTILS ────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.on { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      #site-header { padding: 0 20px; }
+      .h-nav { gap: 18px; }
+      .stats-inner { flex-direction: column; gap: 36px; }
+      .stats-right { gap: 32px; }
+      .slide-panels { grid-template-columns: 100%; }
+      .panel:not(:first-child) { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .cta-wrap { flex-direction: column; align-items: flex-start; gap: 36px; }
+    }
+    @media (max-width: 600px) {
+      .h-nav { display: none; }
+      .stats-right { flex-wrap: wrap; gap: 24px; }
+      .section-wrap, .featured-inner, .services-wrap, .cta-wrap { padding: 0 20px; }
+      #stats .stats-inner { padding: 0 20px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Scroll Progress Bar -->
-<div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+  <!-- ═══ HEADER ═══════════════════════════════════════ -->
+  <header id="site-header">
+    <nav class="h-nav">
+      <a href="#about">스튜디오 소개</a>
+      <a href="#portfolio" class="active">포트폴리오</a>
+      <a href="#services">서비스</a>
+      <a href="#cta">가격안내</a>
+    </nav>
+    <a href="#" class="h-logo" aria-label="피크 스튜디오 홈">
+      <img src="peak_logo.svg" alt="피크 스튜디오" />
+    </a>
+    <a href="http://pf.kakao.com/_ZrTbX/chat" target="_blank" class="h-cta">
+      <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682 2.545-.78 2.94-.122.49.18.483.377.352.155-.103 2.467-1.68 3.468-2.366.544.078 1.1.12 1.665.12 4.97 0 9-3.186 9-7.115S16.97 3 12 3z"/></svg>
+      카카오톡 견적 문의하기
+    </a>
+  </header>
 
-<!-- Cursor Glow -->
-<div class="cursor-glow" id="cursorGlow"></div>
+  <!-- ═══ HERO SLIDER ═══════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-slides" id="heroSlides">
 
-<!-- Loader -->
-<div class="loader" id="loader">
-  <div class="loader-text">PEAK STUDIO</div>
-  <div class="loader-bar"></div>
-</div>
-
-<!-- Navigation -->
-<nav id="navbar">
-  <a href="#" class="nav-logo">
-    <img src="peak_logo.png?v=2" alt="Peak Studio">
-    <span>PEAK</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#faq">FAQ</a></li>
-  </ul>
-  <div class="nav-right">
-    <button id="themeToggle" class="theme-toggle-btn" aria-label="테마 전환">🌙</button>
-    <a href="#contact" class="nav-cta">문의하기</a>
-  </div>
-</nav>
-
-<!-- Hero -->
-<section class="hero" id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="dot"></span>
-      Creative Agency
-    </div>
-    <h1>
-      브랜드를<br>
-      <span class="gradient-text">정점</span>으로
-    </h1>
-    <p class="hero-sub">
-      마케팅 · 브랜딩 · 촬영 · 상세페이지<br>
-      당신의 브랜드가 빛나는 순간을 만듭니다
-    </p>
-    <div class="hero-stats">
-      <div>
-        <div class="hero-stat-num" data-count="150">0</div>
-        <div class="hero-stat-label">Projects</div>
+      <!-- Slide 1 -->
+      <div class="hero-slide">
+        <div class="slide-panels">
+          <!-- Main panel -->
+          <div class="panel">
+            <img class="panel-img"
+              src="https://cdn3.wadiz.kr/studio/images/2025/09/16/19c395f5-56b4-4f15-a2b2-d7dcc760b7f5.jpeg"
+              alt="써마쎄라 페이스튠" />
+            <div class="panel-overlay"></div>
+            <div class="panel-main-text">
+              <p class="panel-eyebrow">예쁘기만 한 상세페이지는 만들지 않습니다.</p>
+              <h1 class="panel-headline">매출 300% 성과로 이어지는<br/>크라우드펀딩 상세페이지</h1>
+            </div>
+          </div>
+          <!-- Panel 2 -->
+          <div class="panel">
+            <img class="panel-img"
+              src="https://cdn3.wadiz.kr/studio/images/2025/01/20/de0f5bc5-97bb-470a-b9fe-c456ee802905.jpeg"
+              alt="써마쎄라 HIFU" />
+            <div class="panel-overlay"></div>
+            <div class="panel-side-text">
+              <p class="panel-side-label">사용 4주 후<br/>경피 수분 향상</p>
+              <p class="panel-side-sub">써마쎄라 HIFU</p>
+            </div>
+          </div>
+          <!-- Panel 3 -->
+          <div class="panel">
+            <img class="panel-img"
+              src="https://cdn3.wadiz.kr/studio/images/2025/09/25/47eb2e40-8504-4648-a943-2838cfd501cf.jpeg"
+              alt="전동 풋 글라인더" />
+            <div class="panel-overlay"></div>
+            <div class="panel-side-text">
+              <p class="panel-side-label">1,200RPM<br/>발각질 고민 종결</p>
+              <p class="panel-side-sub">풋 글라인더</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <div class="hero-stat-num" data-count="98">0</div>
-        <div class="hero-stat-label">Clients</div>
+
+      <!-- Slide 2 -->
+      <div class="hero-slide">
+        <div class="slide-panels">
+          <div class="panel">
+            <img class="panel-img"
+              src="https://cdn3.wadiz.kr/studio/images/2025/08/25/c0a444f6-48ac-483c-a4c2-28e656d6e4ab.jpeg"
+              alt="천작환" />
+            <div class="panel-overlay"></div>
+            <div class="panel-main-text">
+              <p class="panel-eyebrow">와디즈 공식 파트너사 · 600+ 프로젝트</p>
+              <h1 class="panel-headline">브랜드의 가치를<br/>숫자로 증명합니다</h1>
+            </div>
+          </div>
+          <div class="panel">
+            <img class="panel-img"
+              src="https://cdn3.wadiz.kr/studio/images/2025/09/09/240098f2-e2b0-4a32-964a-21ce7e678bf7.jpeg"
+              alt="갈비찜" />
+            <div class="panel-overlay"></div>
+            <div class="panel-side-text">
+              <p class="panel-side-label">홈쇼핑 1등<br/>6분이면 완성</p>
+              <p class="panel-side-sub">뼈 없는 갈비찜</p>
+            </div>
+          </div>
+          <div class="panel">
+            <img class="panel-img"
+              src="https://cdn3.wadiz.kr/studio/images/2026/01/22/31f71a99-9334-4afa-86f6-2d764a98743e.jpeg"
+              alt="닥터트리 콜라겐" />
+            <div class="panel-overlay"></div>
+            <div class="panel-side-text">
+              <p class="panel-side-label">미국 HSN<br/>홈쇼핑 매진</p>
+              <p class="panel-side-sub">닥터트리 콜라겐</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <div class="hero-stat-num" data-count="30">0</div>
-        <div class="hero-stat-label">억+ 펀딩</div>
+
+      <!-- Slide 3 -->
+      <div class="hero-slide">
+        <div class="slide-panels">
+          <div class="panel">
+            <img class="panel-img"
+              src="https://cdn3.wadiz.kr/studio/images/2025/08/28/e4afd37b-e696-4187-83dc-f6a51b7c73c8.jpeg"
+              alt="TEMPUR 인솔" />
+            <div class="panel-overlay"></div>
+            <div class="panel-main-text">
+              <p class="panel-eyebrow">뷰티 · 푸드 · 테크 · 패션 · 홈리빙</p>
+              <h1 class="panel-headline">카테고리를 가리지 않는<br/>전문 콘텐츠 파트너</h1>
+            </div>
+          </div>
+          <div class="panel">
+            <img class="panel-img"
+              src="https://cdn3.wadiz.kr/studio/images/2025/11/06/43671315-9a33-45da-bd8b-967f8f8337c7.jpeg"
+              alt="코럴리프 가방" />
+            <div class="panel-overlay"></div>
+            <div class="panel-side-text">
+              <p class="panel-side-label">와디즈 최초공개<br/>프리미엄 비즈니스백</p>
+              <p class="panel-side-sub">코럴리프</p>
+            </div>
+          </div>
+          <div class="panel">
+            <img class="panel-img"
+              src="https://cdn3.wadiz.kr/studio/images/2025/12/15/aa84a356-d6cb-4e1b-9782-98783b113b83.jpeg"
+              alt="탄다사이클" />
+            <div class="panel-overlay"></div>
+            <div class="panel-side-text">
+              <p class="panel-side-label">저소음 홈트<br/>칼로리 삭제</p>
+              <p class="panel-side-sub">탄다 사이클</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /hero-slides -->
+
+    <!-- Arrows -->
+    <button class="hero-arrow prev" id="heroPrev" aria-label="이전">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="hero-arrow next" id="heroNext" aria-label="다음">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    <!-- Dots -->
+    <div class="hero-dots" id="heroDots">
+      <div class="dot active" data-idx="0"></div>
+      <div class="dot" data-idx="1"></div>
+      <div class="dot" data-idx="2"></div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ══════════════════════════════════════════ -->
+  <section id="stats">
+    <div class="stats-inner">
+      <div class="stats-left reveal">
+        <p class="sub">수 백가지 성공사례를 함께했습니다.</p>
+        <h2>성장하는 스몰 브랜드부터<br/>누구나 아는 대기업까지</h2>
+      </div>
+      <div class="stats-right reveal">
+        <div class="stat-item">
+          <div class="stat-label">누적 프로젝트</div>
+          <div class="stat-num">600<span>+</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">재구매 고객사</div>
+          <div class="stat-num">230<span>+</span></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">평균 고객 만족도</div>
+          <div class="stat-num">97<span>%+</span></div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
+  </section>
 
-<!-- Marquee -->
-<div class="marquee-wrap">
-  <div class="marquee">
-    <span>MARKETING</span>
-    <span class="filled">BRANDING</span>
-    <span>PRODUCTION</span>
-    <span class="filled">DESIGN</span>
-    <span>PHOTOGRAPHY</span>
-    <span class="filled">CREATIVE</span>
-    <span>MARKETING</span>
-    <span class="filled">BRANDING</span>
-    <span>PRODUCTION</span>
-    <span class="filled">DESIGN</span>
-    <span>PHOTOGRAPHY</span>
-    <span class="filled">CREATIVE</span>
-  </div>
-</div>
+  <!-- ═══ LOGO MARQUEE ═══════════════════════════════════ -->
+  <section id="logos" aria-label="협력사 로고">
+    <div class="marquee-track" id="marqueeTrack">
+      <!-- Set 1 -->
+      <div class="logo-item"><span class="logo-text">VADENIGO</span></div>
+      <div class="logo-item"><span class="logo-text">써마쎄라</span></div>
+      <div class="logo-item"><span class="logo-text">DR.TREE</span></div>
+      <div class="logo-item"><span class="logo-text">IKKO</span></div>
+      <div class="logo-item"><span class="logo-text">농협홍삼 한삼인</span></div>
+      <div class="logo-item"><span class="logo-text">BUJA</span></div>
+      <div class="logo-item"><span class="logo-text">리플 부티크 호텔</span></div>
+      <div class="logo-item"><span class="logo-text">휴고코리아</span></div>
+      <div class="logo-item"><span class="logo-text">CAMP365</span></div>
+      <div class="logo-item"><span class="logo-text">REBOX</span></div>
+      <div class="logo-item"><span class="logo-text">TEMPUR®</span></div>
+      <div class="logo-item"><span class="logo-text">FEELY</span></div>
+      <div class="logo-item"><span class="logo-text">CORAL REEF</span></div>
+      <div class="logo-item"><span class="logo-text">탄다 사이클</span></div>
+      <div class="logo-item"><span class="logo-text">SUNNY WOOL</span></div>
+      <div class="logo-item"><span class="logo-text">GOCF 2026</span></div>
+      <div class="logo-item"><span class="logo-text">COMO BIKE</span></div>
+      <div class="logo-item"><span class="logo-text">REVION</span></div>
+      <div class="logo-item"><span class="logo-text">MOVON</span></div>
 
-<!-- About -->
-<section id="about">
-  <div class="about">
-    <div class="reveal">
-      <div class="section-label">About Us</div>
-      <h2 class="section-title">성과를 만드는<br>크리에이티브 파트너</h2>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="logo-item"><span class="logo-text">VADENIGO</span></div>
+      <div class="logo-item"><span class="logo-text">써마쎄라</span></div>
+      <div class="logo-item"><span class="logo-text">DR.TREE</span></div>
+      <div class="logo-item"><span class="logo-text">IKKO</span></div>
+      <div class="logo-item"><span class="logo-text">농협홍삼 한삼인</span></div>
+      <div class="logo-item"><span class="logo-text">BUJA</span></div>
+      <div class="logo-item"><span class="logo-text">리플 부티크 호텔</span></div>
+      <div class="logo-item"><span class="logo-text">휴고코리아</span></div>
+      <div class="logo-item"><span class="logo-text">CAMP365</span></div>
+      <div class="logo-item"><span class="logo-text">REBOX</span></div>
+      <div class="logo-item"><span class="logo-text">TEMPUR®</span></div>
+      <div class="logo-item"><span class="logo-text">FEELY</span></div>
+      <div class="logo-item"><span class="logo-text">CORAL REEF</span></div>
+      <div class="logo-item"><span class="logo-text">탄다 사이클</span></div>
+      <div class="logo-item"><span class="logo-text">SUNNY WOOL</span></div>
+      <div class="logo-item"><span class="logo-text">GOCF 2026</span></div>
+      <div class="logo-item"><span class="logo-text">COMO BIKE</span></div>
+      <div class="logo-item"><span class="logo-text">REVION</span></div>
+      <div class="logo-item"><span class="logo-text">MOVON</span></div>
     </div>
+  </section>
+
+  <!-- ═══ FEATURED CARD ══════════════════════════════════ -->
+  <section id="featured">
+    <div class="featured-inner">
+      <div class="featured-card reveal">
+        <div class="featured-visual">
+          <!-- Animated blob -->
+          <div class="featured-blob" style="background: radial-gradient(ellipse, #ff6b00 0%, #ff3d00 60%, transparent 100%);"></div>
+          <p class="featured-brand-name">WADIZ ✦ PARTNER</p>
+        </div>
+        <div class="featured-info">
+          <h3 class="featured-title">와디즈 공식 파트너 서비스 대행사</h3>
+          <p class="featured-desc">
+            피크 스튜디오는 와디즈(Wadiz)의 공식 파트너 서비스 대행사로서, 브랜드의 프로젝트 성과를 극대화하는 퍼포먼스형 크라우드펀딩 상세페이지를 전문 제작합니다. 최적화된 기획과 디자인으로 검증된 결과를 만듭니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PORTFOLIO ═══════════════════════════════════════ -->
+  <section id="portfolio">
+    <div class="section-wrap">
+      <p class="section-eyebrow reveal">Portfolio</p>
+      <h2 class="section-title reveal">카테고리별 레퍼런스</h2>
+
+      <div class="cat-tabs reveal" id="catTabs">
+        <button class="cat-btn active" data-cat="beauty">💄 뷰티·헬스</button>
+        <button class="cat-btn" data-cat="food">🍱 푸드·음료</button>
+        <button class="cat-btn" data-cat="travel">🏕 여행·레저</button>
+        <button class="cat-btn" data-cat="pet">🐾 반려동물</button>
+        <button class="cat-btn" data-cat="tech">📱 테크·가전</button>
+        <button class="cat-btn" data-cat="fashion">👜 패션·잡화</button>
+        <button class="cat-btn" data-cat="home">🏠 홈리빙·헬스</button>
+        <button class="cat-btn" data-cat="culture">🎬 전시·컬쳐</button>
+        <button class="cat-btn" data-cat="auto">🚗 자동차·모빌리티</button>
+      </div>
+
+      <!-- 뷰티 -->
+      <div class="cat-panel active" id="cat-beauty">
+        <div class="cards-scroll">
+          <div class="cards-track">
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/373961" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/09/16/19c395f5-56b4-4f15-a2b2-d7dcc760b7f5.jpeg" alt="써마쎄라 고주파" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">뷰티</div>
+                <div class="proj-card-title">만족도 4.9, 누적 30억+ 써마쎄라가 만든 고주파 페이스튠</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/317733" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/01/20/de0f5bc5-97bb-470a-b9fe-c456ee802905.jpeg" alt="써마쎄라 HIFU" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">뷰티</div>
+                <div class="proj-card-title">만족도 4.9점 뷰티1위 | 15억 신화 HIFU 써마쎄라 마지막 앵콜</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/359190" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/09/25/47eb2e40-8504-4648-a943-2838cfd501cf.jpeg" alt="닥터트리 발각질제거기" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">뷰티</div>
+                <div class="proj-card-title">[1,200RPM] 발각질 고민 종결! 속도, 구성, 가격 모두 국내 유일</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+            <a class="proj-card" href="https://www.wadiz.kr/web/wcomingsoon/rwd/390565" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2026/01/22/31f71a99-9334-4afa-86f6-2d764a98743e.jpeg" alt="닥터트리 콜라겐" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">뷰티</div>
+                <div class="proj-card-title">미국 HSN 홈쇼핑 매진, 닥터트리 콜라겐 신상 한국 첫출시!</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 푸드 -->
+      <div class="cat-panel" id="cat-food">
+        <div class="cards-scroll">
+          <div class="cards-track">
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/349002" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/08/25/c0a444f6-48ac-483c-a4c2-28e656d6e4ab.jpeg" alt="한삼인 천작환" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">푸드</div>
+                <div class="proj-card-title">대기업 임원 명절 선물 | 1000개 중 오직 5개 홍삼으로 만든 천작환</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/370216" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/08/25/09837d80-2080-448d-bb73-6c7062da944c.jpeg" alt="한삼인 밤양갱" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">푸드</div>
+                <div class="proj-card-title">단쓴단쓴 홍삼 밤양갱 — 쌍화탕맛 중독자라면 주목</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/365477" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/09/09/240098f2-e2b0-4a32-964a-21ce7e678bf7.jpeg" alt="뼈 없는 갈비찜" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">푸드</div>
+                <div class="proj-card-title">S* 홈쇼핑 1등 | 6분이면 전문점 퀄리티 뼈 없는 갈비찜 완성!</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 여행레저 -->
+      <div class="cat-panel" id="cat-travel">
+        <div class="cards-scroll">
+          <div class="cards-track">
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/311487" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2024/09/11/ecd0eb80-7369-4da7-940b-d6af3686ddca.jpeg" alt="휴고코리아 루프박스" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">여행레저</div>
+                <div class="proj-card-title">루프박스가 50만원대? 내 차에 또다른 트렁크 | 캠핑로망 휴고코리아</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/256730" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/03/20/add1c2bd-688f-4ddf-a6f3-da43e3015552.jpeg" alt="캠프365 에어텐트" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">여행레저</div>
+                <div class="proj-card-title">성인 6명 사이즈가 150만원대 | 이 에어텐트는 250만원대여야 합니다.</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/342864" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/03/14/885fd7d3-3671-4263-b2ec-1573f148f413.jpeg" alt="리박스 혁신장작" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">여행레저</div>
+                <div class="proj-card-title">1분 착화 | 진공 포장 장작은 이렇게 진화했어야 합니다. 리박스 혁신장작</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 반려동물 -->
+      <div class="cat-panel" id="cat-pet">
+        <div class="cards-scroll">
+          <div class="cards-track">
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/228078" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/05/27/1a1f7268-dd73-4b82-8cb1-48d5832efa8b.jpeg" alt="애착웨건" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">반려동물</div>
+                <div class="proj-card-title">[대형견, 다견 엄마아빠 필수템] 120kg도 문제없는 애착웨건 등장!</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 테크가전 -->
+      <div class="cat-panel" id="cat-tech">
+        <div class="cards-scroll">
+          <div class="cards-track">
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/391378" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2026/02/03/5c0c85d6-ff09-4e36-b224-2edfcb1ab633.jpeg" alt="Mind One K Pro" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">테크가전</div>
+                <div class="proj-card-title">[한국첫런칭] 글로벌 100억! AI 폼팩터폰 Mind One K Pro</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/275932" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2024/04/29/ac2b8742-eb8e-477b-9ef2-e53ba83b07f5.jpeg" alt="무소음 두유제조기" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">테크가전</div>
+                <div class="proj-card-title">[두유 단 20분] 무소음 두유제조기 등장! 이 블렌더는 새벽에 돌립니다</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 패션잡화 -->
+      <div class="cat-panel" id="cat-fashion">
+        <div class="cards-scroll">
+          <div class="cards-track">
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/370779" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/08/28/e4afd37b-e696-4187-83dc-f6a51b7c73c8.jpeg" alt="TEMPUR 인솔" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">패션잡화</div>
+                <div class="proj-card-title">[오늘마감] 미국 1위 템퍼 매트리스 내 발에 | TEMPUR® 인솔</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/374018" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/11/06/43671315-9a33-45da-bd8b-967f8f8337c7.jpeg" alt="코럴리프 가방" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">패션잡화</div>
+                <div class="proj-card-title">[와디즈 최초공개] 비즈니스의 신뢰, 가방으로 말하다. 코럴리프 가방</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+            <a class="proj-card" href="https://www.wadiz.kr/web/wcomingsoon/rwd/395220" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2026/03/10/b34d88ef-8787-4855-ad75-ece6589ac29e.jpeg" alt="" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">패션잡화</div>
+                <div class="proj-card-title">4만원대ㅣ눈부심과 가격거품 삭제. 선명함과 퀄리티만 남겼어요 VS-011</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 홈리빙 -->
+      <div class="cat-panel" id="cat-home">
+        <div class="cards-scroll">
+          <div class="cards-track">
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/375554" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/09/30/506ae7a9-0878-4b4c-8c17-dcf15c0a5746.jpeg" alt="" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">홈리빙</div>
+                <div class="proj-card-title">하루 딱 10분만! 천국의계단과 탄다 사이클로 급찐살 삭제</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/383910" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/12/01/80c3e56e-0ecd-483d-88db-f51737912351.jpeg" alt="" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">홈리빙</div>
+                <div class="proj-card-title">백화점산 최상급 메리노울 양모매트 | 만져보면 부드러움에 놀라실 거예요</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 전시&컬쳐 -->
+      <div class="cat-panel" id="cat-culture">
+        <div class="cards-scroll">
+          <div class="cards-track">
+            <a class="proj-card" href="https://www.wadiz.kr/web/wcomingsoon/rwd/394371" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2026/03/05/c28d8735-3206-443a-8505-4fbf0a62ff47.jpeg" alt="" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">전시&컬쳐</div>
+                <div class="proj-card-title">2026 GOCF | 4월 봄나들이 고민? 아웃도어를 사랑한다면 바로여기</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 자동차&스포츠 -->
+      <div class="cat-panel" id="cat-auto">
+        <div class="cards-scroll">
+          <div class="cards-track">
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/364950" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/07/28/a4ea1207-ef54-472b-8d59-02aa4a6a81e0.jpeg" alt="" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">자동차&스포츠</div>
+                <div class="proj-card-title">연비상승, 매연감소, 출력향상 효과를 단 한번의 주입으로 지속한다면?</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+            <a class="proj-card" href="https://www.wadiz.kr/web/campaign/detail/381056" target="_blank">
+              <img class="proj-card-img" src="https://cdn3.wadiz.kr/studio/images/2025/11/28/21c7b502-666f-46f6-902d-8c54835c68a8.jpeg" alt="" loading="lazy"/>
+              <div class="proj-card-body">
+                <div class="proj-card-cat">자동차&스포츠</div>
+                <div class="proj-card-title">졸음운전 감지 기술, 나와 가족을 지키는 운전자 안전 솔루션</div>
+                <span class="proj-card-link">와디즈에서 보기 →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /section-wrap -->
+  </section>
+
+  <!-- ═══ ABOUT ═══════════════════════════════════════════ -->
+  <section id="about">
     <div class="about-grid">
-      <div class="about-text reveal">
-        <p>피크 스튜디오는 와디즈, 텀블벅 등 크라우드펀딩 플랫폼의 공식 파트너사로서 다수의 프로젝트를 성공적으로 이끌어온 종합 크리에이티브 에이전시입니다.</p>
-        <p>뷰티, 푸드, 테크, 패션, 홈리빙 등 다양한 카테고리에서 축적된 노하우를 바탕으로 브랜드의 가치를 극대화하고, 실질적인 매출 성과로 연결합니다.</p>
-        <p>기획부터 촬영, 디자인, 마케팅까지 원스톱 서비스를 제공하여 브랜드가 시장에서 돋보일 수 있도록 최적의 솔루션을 제안합니다.</p>
+      <div class="about-left reveal">
+        <h2>성과를 만드는<br/>크라우드펀딩 전문가</h2>
+        <p style="margin-top:16px;">
+          피크 스튜디오는 와디즈 공식 파트너사로, 단순히 예쁜 페이지가 아닌
+          실제 매출로 이어지는 퍼포먼스형 상세페이지를 제작합니다.<br/><br/>
+          뷰티, 푸드, 테크, 홈리빙 등 다양한 카테고리에서
+          수백 건의 프로젝트를 성공적으로 완수하였습니다.
+        </p>
       </div>
-      <div class="about-visual reveal">
-        <div class="about-card">
-          <div class="card-icon">🎯</div>
-          <h4>전략 기획</h4>
-          <p>데이터 기반의 시장 분석과 타겟 설정</p>
+      <div class="about-right reveal">
+        <div class="about-item">
+          <div class="about-num">01</div>
+          <div>
+            <h3>카테고리 전문성</h3>
+            <p>9개 이상 카테고리에서 전문화된 콘텐츠를 제작합니다.</p>
+          </div>
         </div>
-        <div class="about-card">
-          <div class="card-icon">📸</div>
-          <h4>촬영 제작</h4>
-          <p>프리미엄 제품 촬영과 영상 콘텐츠</p>
+        <div class="about-item">
+          <div class="about-num">02</div>
+          <div>
+            <h3>와디즈 공식 파트너</h3>
+            <p>플랫폼 최적화된 상세페이지를 설계합니다.</p>
+          </div>
         </div>
-        <div class="about-card">
-          <div class="card-icon">🎨</div>
-          <h4>디자인</h4>
-          <p>브랜드 아이덴티티와 상세페이지</p>
+        <div class="about-item">
+          <div class="about-num">03</div>
+          <div>
+            <h3>성과 중심 설계</h3>
+            <p>구매로 이어지는 콘텐츠 구조를 최우선합니다.</p>
+          </div>
         </div>
-        <div class="about-card">
-          <div class="card-icon">📈</div>
-          <h4>마케팅</h4>
-          <p>퍼포먼스 마케팅과 광고 운영</p>
+        <div class="about-item">
+          <div class="about-num">04</div>
+          <div>
+            <h3>분위기 맞춤 제작</h3>
+            <p>브랜드 톤앤매너에 맞는 비주얼 + 카피를 제공합니다.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Services -->
-<section id="services" class="services">
-  <div class="services-inner">
-    <div class="reveal">
-      <div class="section-label">Services</div>
-      <h2 class="section-title">우리가 하는 일</h2>
-      <p class="section-desc">브랜드의 시작부터 성장까지, 피크 스튜디오가 함께합니다.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-item reveal">
-        <div class="service-num">01</div>
-        <h3>브랜딩 전략</h3>
-        <p>브랜드 포지셔닝, 네이밍, BI/CI 개발 등 브랜드 정체성을 수립하고 시장에서의 차별화 전략을 설계합니다.</p>
-      </div>
-      <div class="service-item reveal">
-        <div class="service-num">02</div>
-        <h3>촬영 & 영상</h3>
-        <p>제품 촬영, 모델 촬영, 광고 영상까지. 전문 스튜디오에서 브랜드에 맞는 최적의 비주얼을 제작합니다.</p>
-      </div>
-      <div class="service-item reveal">
-        <div class="service-num">03</div>
-        <h3>상세페이지 제작</h3>
-        <p>구매 전환율을 극대화하는 상세페이지를 기획하고 디자인합니다. 펀딩 페이지 전문 제작 경험이 풍부합니다.</p>
-      </div>
-      <div class="service-item reveal">
-        <div class="service-num">04</div>
-        <h3>퍼포먼스 마케팅</h3>
-        <p>SNS 광고, 검색 광고, 인플루언서 마케팅 등 데이터 기반 퍼포먼스 마케팅으로 실질적 성과를 만듭니다.</p>
+  <!-- ═══ SERVICES ════════════════════════════════════════ -->
+  <section id="services">
+    <div class="services-wrap">
+      <p class="section-eyebrow" style="color:rgba(255,85,0,.9);">Services</p>
+      <h2 class="section-title" style="color:#fff; margin-bottom:56px;">제작 가능한<br/>서비스 분야</h2>
+      <div class="svc-list reveal">
+        <div class="svc-item"><div class="svc-left"><span class="svc-num">01</span><span class="svc-name">뷰티 · 헬스케어 상세페이지</span></div><span class="svc-arrow">↗</span></div>
+        <div class="svc-item"><div class="svc-left"><span class="svc-num">02</span><span class="svc-name">푸드 · 식품 크라우드펀딩</span></div><span class="svc-arrow">↗</span></div>
+        <div class="svc-item"><div class="svc-left"><span class="svc-num">03</span><span class="svc-name">테크 · 가전 제품 소개</span></div><span class="svc-arrow">↗</span></div>
+        <div class="svc-item"><div class="svc-left"><span class="svc-num">04</span><span class="svc-name">여행 · 레저 · 반려동물</span></div><span class="svc-arrow">↗</span></div>
+        <div class="svc-item"><div class="svc-left"><span class="svc-num">05</span><span class="svc-name">패션 · 홈리빙 · 라이프스타일</span></div><span class="svc-arrow">↗</span></div>
+        <div class="svc-item"><div class="svc-left"><span class="svc-num">06</span><span class="svc-name">광고 소재 · 영상 콘텐츠</span></div><span class="svc-arrow">↗</span></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Portfolio -->
-<section id="portfolio">
-  <div class="portfolio-inner">
-    <div class="reveal">
-      <div class="section-label">Portfolio</div>
-      <h2 class="section-title">대표 프로젝트</h2>
-      <p class="section-desc">다양한 카테고리에서 검증된 성과를 확인해보세요.</p>
+  <!-- ═══ CTA ═════════════════════════════════════════════ -->
+  <section id="cta">
+    <div class="cta-wrap reveal">
+      <div class="cta-watermark">Peakstudio</div>
+      <div class="cta-content">
+        <h2>피크 스튜디오와 함께<br/>성과를 설계해보세요</h2>
+        <p>다음 성공사례의 주인공이 되실 브랜드를 찾습니다.<br/>카카오톡 1:1 채널 상담을 통해 빠른 견적 문의가 가능합니다.</p>
+        <a href="http://pf.kakao.com/_ZrTbX/chat" target="_blank" class="btn-orange">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682 2.545-.78 2.94-.122.49.18.483.377.352.155-.103 2.467-1.68 3.468-2.366.544.078 1.1.12 1.665.12 4.97 0 9-3.186 9-7.115S16.97 3 12 3z"/></svg>
+          카카오톡 견적 문의하기 ↗
+        </a>
+      </div>
+      
+      <!-- QR Code Card -->
+      <div class="cta-qr-card">
+        <img class="cta-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=http%3A%2F%2Fpf.kakao.com%2F_ZrTbX%2Fchat&color=111111&bgcolor=ffffff" alt="카카오톡 상담 QR코드" />
+        <div class="cta-qr-label">📱 QR 스캔 실시간 상담</div>
+        <div class="cta-qr-sub">카카오톡 카메라로 촬영하세요</div>
+      </div>
     </div>
-    <div class="portfolio-filter reveal">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="뷰티">뷰티</button>
-      <button class="filter-btn" data-filter="푸드">푸드</button>
-      <button class="filter-btn" data-filter="테크가전">테크가전</button>
-      <button class="filter-btn" data-filter="여행레저">여행레저</button>
-      <button class="filter-btn" data-filter="패션잡화">패션잡화</button>
-      <button class="filter-btn" data-filter="홈리빙">홈리빙</button>
-      <button class="filter-btn" data-filter="반려동물">반려동물</button>
-      <button class="filter-btn" data-filter="전시컬쳐">전시&컬쳐</button>
-      <button class="filter-btn" data-filter="자동차">자동차</button>
-    </div>
-    <div class="portfolio-grid" id="portfolioGrid">
-      <!-- JS로 렌더링 -->
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Process -->
-<section id="process" class="process">
-  <div class="process-inner">
-    <div class="reveal">
-      <div class="section-label">Process</div>
-      <h2 class="section-title">프로젝트 진행 과정</h2>
-      <p class="section-desc">체계적인 프로세스로 최고의 결과물을 만들어냅니다.</p>
-    </div>
-    <div class="process-steps">
-      <div class="process-line"></div>
-      <div class="process-step reveal">
-        <div class="process-dot">01</div>
+  <!-- ═══ FOOTER ════════════════════════════════════════== -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
         <div>
-          <h4>미팅 & 분석</h4>
-          <p>브랜드와 제품에 대한 깊은 이해를 바탕으로 시장 환경을 분석하고 프로젝트 방향성을 설정합니다.</p>
+          <div class="footer-col-label">About</div>
+          <div class="footer-col-text">
+            피크 스튜디오<br/>
+            와디즈 공식 파트너사<br/>
+            크라우드펀딩 상세페이지 전문
+          </div>
         </div>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-dot">02</div>
         <div>
-          <h4>전략 수립 & 기획</h4>
-          <p>타겟 고객, 핵심 메시지, 톤앤매너를 정의하고 구체적인 콘텐츠 전략과 일정을 수립합니다.</p>
+          <div class="footer-col-label">Contact</div>
+          <div class="footer-col-text">
+            <a href="http://pf.kakao.com/_ZrTbX/chat" target="_blank" style="color:rgba(255,255,255,.75); font-weight:600;">
+              💬 카카오톡 채널 상담 ↗
+            </a><br/>
+            피크 스튜디오 공식 지원
+          </div>
         </div>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-dot">03</div>
         <div>
-          <h4>촬영 & 제작</h4>
-          <p>전문 스튜디오에서 제품 촬영, 영상 제작, 상세페이지 디자인 등 콘텐츠를 제작합니다.</p>
+          <div class="footer-col-label">Link</div>
+          <div class="footer-col-text">
+            <a href="https://www.wadiz.kr" target="_blank" style="color:rgba(255,255,255,.55);">와디즈 바로가기</a><br/>
+            <a href="#portfolio" style="color:rgba(255,255,255,.55);">포트폴리오</a>
+          </div>
         </div>
       </div>
-      <div class="process-step reveal">
-        <div class="process-dot">04</div>
-        <div>
-          <h4>런칭 & 마케팅</h4>
-          <p>최적의 타이밍에 런칭하고, 퍼포먼스 마케팅과 PR을 통해 최대한의 성과를 이끌어냅니다.</p>
-        </div>
-      </div>
-      <div class="process-step reveal">
-        <div class="process-dot">05</div>
-        <div>
-          <h4>분석 & 최적화</h4>
-          <p>데이터를 기반으로 성과를 분석하고, 지속적인 최적화를 통해 더 나은 결과를 만들어갑니다.</p>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Peak Studio. All rights reserved.</span>
+        <div class="footer-logo">
+          <img src="peak_logo.svg" alt="피크 스튜디오" />
+          <span>PEAK STUDIO</span>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<!-- FAQ Accordion -->
-<section id="faq" class="faq-section">
-  <div class="faq-inner">
-    <div class="reveal">
-      <div class="section-label">FAQ</div>
-      <h2 class="section-title">자주 묻는 질문</h2>
-      <p class="section-desc">피크 스튜디오와 프로젝트 진행 시 가장 많이 여쭤보시는 질문들을 모았습니다.</p>
-    </div>
-    <div class="faq-list reveal">
-      <div class="faq-item">
-        <div class="faq-header">
-          <h4>Q. 펀딩 진행이 처음인데, 기획부터 촬영, 디자인까지 전체 다 제작해주시나요?</h4>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-body">
-          <p>네, 그렇습니다. 피크 스튜디오는 단순 디자인 대행이 아닌 기획 단계부터 세밀한 컨셉 제안, 촬영(제품 연출, 모델 섭외 등), 상세페이지 기획/디자인, 그리고 마케팅까지 원스톱으로 프로젝트를 대행합니다. 펀딩이 처음이시더라도 브랜드와 제품 강점에 최적화된 기획을 이끌어 드립니다.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-header">
-          <h4>Q. 제작 기간은 보통 어느 정도 소요되나요?</h4>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-body">
-          <p>카테고리 및 프로젝트 범위에 따라 상이하지만, 평균적으로 촬영을 포함한 상세페이지 제작은 기획 협의부터 최종 런칭까지 약 3~4주 정도 소요됩니다. 펀딩 심사 기간(약 1~2주)을 고려하여 최소 오픈 5~6주 전에 프로젝트를 개시하는 것을 추천해 드립니다.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-header">
-          <h4>Q. 와디즈/텀블벅 같은 펀딩 플랫폼 외에 자사몰이나 오픈마켓용 상세페이지도 제작 가능한가요?</h4>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-body">
-          <p>네, 가능합니다. 크라우드펀딩에 최적화된 초고전환 카피라이팅 기획 역량을 바탕으로, 네이버 스마트스토어, 쿠팡, 자사몰 등 일반 이커머스 채널에서 매출을 견인할 수 있는 구매 전환 지향적 상세페이지를 제작합니다.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-header">
-          <h4>Q. 마케팅만 따로 집행하거나 촬영만 별도 진행할 수도 있나요?</h4>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-body">
-          <p>네, 서비스별 개별 진행도 지원합니다. 다만, 비주얼 톤앤매너와 상세페이지 소구 포인트, 그리고 퍼포먼스 광고의 일관성이 유지될 때 성과가 극대화되기 때문에 기획-촬영-디자인-마케팅의 종합 패키지를 권장해 드립니다.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <script>
+    /* ── Header shadow ───────────────────────── */
+    const hdr = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      hdr.classList.toggle('shadow', window.scrollY > 10);
+    });
 
-<!-- CTA / Project Planner -->
-<section id="contact" class="contact-cta-section">
-  <div class="contact-inner">
-    <div class="reveal text-center">
-      <div class="section-label">Contact Us</div>
-      <h2 class="section-title">프로젝트 플래너</h2>
-      <p class="section-desc" style="margin: 16px auto 40px;">당신의 브랜드가 정점에 닿을 수 있도록 피크 스튜디오가 함께 계획합니다. 아래 폼을 작성해 주시면 24시간 내에 답변 드리겠습니다.</p>
-    </div>
-    
-    <div class="planner-card reveal">
-      <form id="projectPlannerForm" class="planner-form">
-        
-        <!-- 카테고리 선택 -->
-        <div class="form-group">
-          <label class="form-label">프로젝트 카테고리 (중복 선택 가능)</label>
-          <div class="form-group-chips" id="formCategory" data-multiselect="true">
-            <button type="button" class="form-btn" data-value="뷰티">뷰티</button>
-            <button type="button" class="form-btn" data-value="푸드">푸드</button>
-            <button type="button" class="form-btn" data-value="테크가전">테크가전</button>
-            <button type="button" class="form-btn" data-value="여행레저">여행레저</button>
-            <button type="button" class="form-btn" data-value="패션잡화">패션잡화</button>
-            <button type="button" class="form-btn" data-value="홈리빙">홈리빙</button>
-            <button type="button" class="form-btn" data-value="반려동물">반려동물</button>
-            <button type="button" class="form-btn" data-value="기타">기타</button>
-          </div>
-        </div>
+    /* ── Hero slider ─────────────────────────── */
+    const slides   = document.getElementById('heroSlides');
+    const dots     = document.querySelectorAll('#heroDots .dot');
+    let current    = 0;
+    const total    = document.querySelectorAll('.hero-slide').length;
+    let autoTimer;
 
-        <!-- 필요한 서비스 선택 -->
-        <div class="form-group">
-          <label class="form-label">필요하신 서비스 (중복 선택 가능)</label>
-          <div class="form-group-chips" id="formServices" data-multiselect="true">
-            <button type="button" class="form-btn" data-value="브랜딩 전략">브랜딩 전략</button>
-            <button type="button" class="form-btn" data-value="제품 및 모델 촬영">제품/모델 촬영</button>
-            <button type="button" class="form-btn" data-value="상세페이지 제작">상세페이지 제작</button>
-            <button type="button" class="form-btn" data-value="퍼포먼스 마케팅">퍼포먼스 마케팅</button>
-            <button type="button" class="form-btn" data-value="원스톱 올인원 패키지">올인원 패키지</button>
-          </div>
-        </div>
+    function goSlide(idx) {
+      current = (idx + total) % total;
+      slides.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
 
-        <!-- 예산 규모 선택 -->
-        <div class="form-group">
-          <label class="form-label">희망 예산 (협의 가능)</label>
-          <div class="form-group-chips" id="formBudget" data-multiselect="false">
-            <button type="button" class="form-btn" data-value="500만원 이하">500만원 이하</button>
-            <button type="button" class="form-btn" data-value="500~1000만원">500~1000만원</button>
-            <button type="button" class="form-btn" data-value="1000~2000만원">1000~2000만원</button>
-            <button type="button" class="form-btn" data-value="2000만원 이상">2000만원 이상</button>
-            <button type="button" class="form-btn" data-value="협의 필요">협의 필요</button>
-          </div>
-        </div>
+    function startAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => goSlide(current + 1), 4500);
+    }
 
-        <!-- 상세 소개 적기 -->
-        <div class="form-group">
-          <label for="projectDesc" class="form-label">프로젝트 소개 및 문의 내용 <span class="required">*</span></label>
-          <textarea id="projectDesc" rows="5" class="form-input" placeholder="제품의 특징, 희망 오픈 일정 등 구체적인 내용을 작성해 주세요." required></textarea>
-        </div>
+    document.getElementById('heroPrev').addEventListener('click', () => { goSlide(current - 1); startAuto(); });
+    document.getElementById('heroNext').addEventListener('click', () => { goSlide(current + 1); startAuto(); });
+    dots.forEach(d => d.addEventListener('click', () => { goSlide(+d.dataset.idx); startAuto(); }));
+    startAuto();
 
-        <!-- 고객 기본 정보 -->
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="clientName" class="form-label">성함 / 담당자명 <span class="required">*</span></label>
-            <input type="text" id="clientName" class="form-input" placeholder="홍길동" required>
-          </div>
-          <div class="form-group">
-            <label for="clientCompany" class="form-label">회사명 / 브랜드명</label>
-            <input type="text" id="clientCompany" class="form-input" placeholder="피크스튜디오">
-          </div>
-          <div class="form-group">
-            <label for="clientEmail" class="form-label">이메일 주소 <span class="required">*</span></label>
-            <input type="email" id="clientEmail" class="form-input" placeholder="contact@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="clientPhone" class="form-label">연락처</label>
-            <input type="tel" id="clientPhone" class="form-input" placeholder="010-0000-0000">
-          </div>
-        </div>
+    /* ── Category tabs ───────────────────────── */
+    const catBtns   = document.querySelectorAll('.cat-btn');
+    const catPanels = document.querySelectorAll('.cat-panel');
+    const catMap    = {
+      beauty:'cat-beauty', food:'cat-food', travel:'cat-travel',
+      pet:'cat-pet', tech:'cat-tech', fashion:'cat-fashion',
+      home:'cat-home', culture:'cat-culture', auto:'cat-auto'
+    };
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        catBtns.forEach(b => b.classList.remove('active'));
+        catPanels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(catMap[btn.dataset.cat]).classList.add('active');
+      });
+    });
 
-        <button type="submit" class="btn-primary form-submit-btn">문의 제출하기</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <span>PEAK STUDIO</span>
-      <p>브랜드를 정점으로 끌어올리는 크리에이티브 에이전시</p>
-    </div>
-    <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Peak Studio. All rights reserved.</span>
-    <span>서울특별시 · 피크 스튜디오</span>
-  </div>
-</footer>
-
-<!-- Project Detail Modal -->
-<div id="projectModal" class="modal-overlay">
-  <div class="modal-window">
-    <button class="modal-close-icon" aria-label="닫기" onclick="closeProjectModal()">×</button>
-    <div id="modalBody" class="modal-body-container">
-      <!-- 동적으로 main.js에서 생성됨 -->
-    </div>
-  </div>
-</div>
-
-<!-- Toast Notifications Container -->
-<div id="toastContainer"></div>
-
-<script src="main.js"></script>
+    /* ── Scroll reveal ───────────────────────── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ro.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => ro.observe(el));
+  </script>
 </body>
 </html>
