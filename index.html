@@ -81,6 +81,37 @@
     .h-cta:hover { background: #e64c00; transform: translateY(-1px); }
     .h-cta svg { width: 14px; height: 14px; fill: #fff; flex-shrink: 0; }
 
+    /* ── FLOATING KAKAO CTA ───────────────────────────── */
+    .floating-kakao-cta {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #ff5500;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 13px 22px;
+      border-radius: 100px;
+      box-shadow: 0 10px 30px rgba(255, 85, 0, 0.4), 0 4px 12px rgba(0,0,0,0.15);
+      transition: all .3s cubic-bezier(.4,0,.2,1);
+      text-decoration: none;
+    }
+    .floating-kakao-cta:hover {
+      background: #e64c00;
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 14px 36px rgba(255, 85, 0, 0.5), 0 6px 16px rgba(0,0,0,0.2);
+    }
+    .floating-kakao-cta svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
     /* ── HERO SLIDER ───────────────────────────────────── */
     #hero {
       margin-top: 60px;
@@ -763,8 +794,37 @@
       .footer-top { grid-template-columns: 1fr; gap: 28px; }
       .cta-wrap { flex-direction: column; align-items: flex-start; gap: 36px; }
     }
+    @media (max-width: 768px) {
+      #site-header {
+        padding: 0 16px;
+        height: 56px;
+      }
+      .h-logo {
+        position: relative;
+        left: 0;
+        transform: none;
+      }
+      .h-logo img {
+        width: 32px; height: 32px;
+      }
+      .h-nav {
+        margin-left: auto;
+        gap: 16px;
+      }
+      .h-nav a {
+        font-size: 13px;
+      }
+      .h-cta {
+        display: none; /* Hide header long text CTA on mobile; Floating button replaces it */
+      }
+      .floating-kakao-cta {
+        bottom: 20px;
+        right: 16px;
+        padding: 11px 18px;
+        font-size: 13px;
+      }
+    }
     @media (max-width: 600px) {
-      .h-nav { display: none; }
       .stats-right { flex-wrap: wrap; gap: 24px; }
       .section-wrap, .featured-inner, .services-wrap, .cta-wrap { padding: 0 20px; }
       #stats .stats-inner { padding: 0 20px; }
@@ -775,15 +835,15 @@
 
   <!-- ═══ HEADER ═══════════════════════════════════════ -->
   <header id="site-header">
+    <a href="#" class="h-logo" aria-label="피크 스튜디오 홈">
+      <img src="peak_logo.svg" alt="피크 스튜디오" />
+    </a>
     <nav class="h-nav">
-      <a href="#about">스튜디오 소개</a>
+      <a href="#about">소개</a>
       <a href="#portfolio" class="active">포트폴리오</a>
       <a href="#services">서비스</a>
       <a href="#cta">가격안내</a>
     </nav>
-    <a href="#" class="h-logo" aria-label="피크 스튜디오 홈">
-      <img src="peak_logo.svg" alt="피크 스튜디오" />
-    </a>
     <a href="http://pf.kakao.com/_ZrTbX/chat" target="_blank" class="h-cta">
       <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682 2.545-.78 2.94-.122.49.18.483.377.352.155-.103 2.467-1.68 3.468-2.366.544.078 1.1.12 1.665.12 4.97 0 9-3.186 9-7.115S16.97 3 12 3z"/></svg>
       카카오톡 견적 문의하기
@@ -1395,6 +1455,12 @@
       </div>
     </div>
   </footer>
+
+  <!-- ═══ FLOATING KAKAO CTA ════════════════════════════ -->
+  <a href="http://pf.kakao.com/_ZrTbX/chat" target="_blank" class="floating-kakao-cta" aria-label="카카오톡 견적 문의하기">
+    <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682 2.545-.78 2.94-.122.49.18.483.377.352.155-.103 2.467-1.68 3.468-2.366.544.078 1.1.12 1.665.12 4.97 0 9-3.186 9-7.115S16.97 3 12 3z"/></svg>
+    <span>카카오톡 견적 문의하기</span>
+  </a>
 
   <script>
     /* ── Header shadow ───────────────────────── */
