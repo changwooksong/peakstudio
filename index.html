@@ -797,6 +797,33 @@
         padding: 0 16px;
         height: 56px;
       }
+      #hero {
+        margin-top: 56px;
+        height: 58vh;
+        min-height: 340px;
+        max-height: 460px;
+      }
+      .panel-img {
+        object-fit: cover;
+        object-position: center 35%;
+      }
+      .panel-main-text {
+        bottom: 24px;
+        left: 20px;
+        right: 20px;
+      }
+      .panel-eyebrow {
+        font-size: 11px;
+        letter-spacing: .08em;
+      }
+      .panel-headline {
+        font-size: 22px;
+        line-height: 1.35;
+      }
+      .hero-arrow {
+        width: 36px;
+        height: 36px;
+      }
       .h-logo {
         position: relative;
         left: 0;
@@ -823,6 +850,13 @@
       }
     }
     @media (max-width: 600px) {
+      #hero {
+        height: 52vh;
+        min-height: 320px;
+      }
+      .panel-headline {
+        font-size: 20px;
+      }
       .stats-right { flex-wrap: wrap; gap: 24px; }
       .section-wrap, .featured-inner, .services-wrap, .cta-wrap { padding: 0 20px; }
       #stats .stats-inner { padding: 0 20px; }
