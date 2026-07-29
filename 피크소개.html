@@ -7,6 +7,13 @@
   <meta name="description" content="피크 스튜디오는 와디즈 공식 파트너사로, 뷰티·푸드·테크·홈리빙 등 다양한 카테고리의 크라우드펀딩 상세페이지를 제작합니다." />
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <style>
+    /* ── BRAND COLOR SYSTEM (CSS VARIABLES) ─────────── */
+    :root {
+      --brand-primary: #ff5500;
+      --brand-hover: #e64c00;
+      --brand-shadow: rgba(255, 85, 0, 0.35);
+    }
+
     /* ── RESET & BASE ──────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -64,7 +71,7 @@
 
     .h-cta {
       margin-left: auto;
-      background: #ff5500;
+      background: var(--brand-primary);
       color: #fff;
       font-size: 13px;
       font-weight: 700;
@@ -76,7 +83,7 @@
       white-space: nowrap;
       transition: background .2s, transform .2s;
     }
-    .h-cta:hover { background: #e64c00; transform: translateY(-1px); }
+    .h-cta:hover { background: var(--brand-hover); transform: translateY(-1px); }
     .h-cta svg { width: 14px; height: 14px; fill: #fff; flex-shrink: 0; }
 
     /* ── FLOATING KAKAO CTA ───────────────────────────── */
@@ -88,26 +95,129 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      background: #ff5500;
+      background: var(--brand-primary);
       color: #fff;
       font-size: 14px;
       font-weight: 700;
       padding: 13px 22px;
       border-radius: 100px;
-      box-shadow: 0 10px 30px rgba(255, 85, 0, 0.4), 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 30px var(--brand-shadow), 0 4px 12px rgba(0,0,0,0.15);
       transition: all .3s cubic-bezier(.4,0,.2,1);
       text-decoration: none;
     }
     .floating-kakao-cta:hover {
-      background: #e64c00;
+      background: var(--brand-hover);
       transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 14px 36px rgba(255, 85, 0, 0.5), 0 6px 16px rgba(0,0,0,0.2);
+      box-shadow: 0 14px 36px var(--brand-shadow), 0 6px 16px rgba(0,0,0,0.2);
     }
     .floating-kakao-cta svg {
       width: 18px;
       height: 18px;
       fill: currentColor;
       flex-shrink: 0;
+    }
+
+    /* ── COLOR PALETTE SWITCHER WIDGET ───────────────── */
+    #color-palette-widget {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 10000;
+      font-family: inherit;
+    }
+    .palette-toggle-btn {
+      background: #111;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      transition: all 0.3s;
+    }
+    .palette-toggle-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+    }
+    .palette-color-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--brand-primary);
+      display: inline-block;
+      box-shadow: 0 0 8px var(--brand-primary);
+    }
+    .palette-panel {
+      position: absolute;
+      bottom: 50px;
+      left: 0;
+      background: rgba(17, 17, 17, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 18px;
+      border-radius: 20px;
+      width: 260px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+      animation: paletteFadeUp 0.3s ease;
+    }
+    .palette-panel.active {
+      display: flex;
+    }
+    @keyframes paletteFadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .palette-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .palette-swatches {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+    .swatch-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .swatch-btn:hover, .swatch-btn.active {
+      transform: scale(1.15);
+      border-color: #fff;
+    }
+    .custom-color-picker-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.08);
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      color: #ccc;
+    }
+    .custom-color-picker-row input[type="color"] {
+      -webkit-appearance: none;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      background: none;
     }
 
     /* ── HERO SLIDER ───────────────────────────────────── */
@@ -446,15 +556,19 @@
       transition: all .2s;
       white-space: nowrap;
     }
-    .cat-btn:hover { border-color: #ff5500; color: #ff5500; }
+    .cat-btn:hover { border-color: var(--brand-primary); color: var(--brand-primary); }
     .cat-btn.active {
-      background: #ff5500;
-      border-color: #ff5500;
+      background: var(--brand-primary);
+      border-color: var(--brand-primary);
       color: #fff;
     }
-
-    /* Cards horizontal scroll */
-    .cards-scroll {
+    .btn-orange {
+      background: var(--brand-primary);
+      color: #fff;
+    }
+    .btn-orange:hover {
+      background: var(--brand-hover);
+    }.cards-scroll {
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -1510,7 +1624,93 @@
     <span>카카오톡 견적 문의하기</span>
   </a>
 
+  <!-- ═══ COLOR PALETTE SWITCHER WIDGET ═══════════════ -->
+  <div id="color-palette-widget">
+    <button class="palette-toggle-btn" id="paletteToggleBtn" aria-label="키컬러 실시간 변경">
+      <span class="palette-color-dot" id="currentPaletteDot"></span>
+      <span>🎨 브랜드 키컬러 변경</span>
+    </button>
+    <div class="palette-panel" id="palettePanel">
+      <div class="palette-title">
+        <span>브랜드 키컬러 팔레트</span>
+        <span style="font-size: 11px; opacity: 0.6;">실시간 테스트</span>
+      </div>
+      <div class="palette-swatches">
+        <button class="swatch-btn active" style="background: #ff5500;" data-color="#ff5500" title="Vibrant Orange (현재)"></button>
+        <button class="swatch-btn" style="background: #0066ff;" data-color="#0066ff" title="Electric Cobalt Blue"></button>
+        <button class="swatch-btn" style="background: #7c3aed;" data-color="#7c3aed" title="Violet Purple"></button>
+        <button class="swatch-btn" style="background: #00c853;" data-color="#00c853" title="Emerald Green"></button>
+        <button class="swatch-btn" style="background: #ff0055;" data-color="#ff0055" title="Hot Magenta Pink"></button>
+        <button class="swatch-btn" style="background: #ff9900;" data-color="#ff9900" title="Amber Yellow"></button>
+      </div>
+      <div class="custom-color-picker-row">
+        <span>직접 색상 선택</span>
+        <input type="color" id="customColorInput" value="#ff5500" title="커스텀 컬러 선택" />
+      </div>
+    </div>
+  </div>
+
   <script>
+    /* ── Color Palette Switcher Script ────────── */
+    const paletteToggleBtn = document.getElementById('paletteToggleBtn');
+    const palettePanel     = document.getElementById('palettePanel');
+    const swatchBtns       = document.querySelectorAll('.swatch-btn');
+    const customColorInput = document.getElementById('customColorInput');
+    const currentPaletteDot= document.getElementById('currentPaletteDot');
+
+    paletteToggleBtn.addEventListener('click', () => {
+      palettePanel.classList.toggle('active');
+    });
+
+    // Close panel on outside click
+    document.addEventListener('click', (e) => {
+      if (!document.getElementById('color-palette-widget').contains(e.target)) {
+        palettePanel.classList.remove('active');
+      }
+    });
+
+    function setBrandColor(color) {
+      document.documentElement.style.setProperty('--brand-primary', color);
+      // Generate hover color (slightly darker) and shadow
+      document.documentElement.style.setProperty('--brand-hover', adjustColorBrightness(color, -15));
+      document.documentElement.style.setProperty('--brand-shadow', hexToRgba(color, 0.4));
+      
+      currentPaletteDot.style.background = color;
+      currentPaletteDot.style.boxShadow = `0 0 10px ${color}`;
+      customColorInput.value = color;
+
+      // Update active swatch state
+      swatchBtns.forEach(b => {
+        b.classList.toggle('active', b.dataset.color === color);
+      });
+    }
+
+    swatchBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        setBrandColor(btn.dataset.color);
+      });
+    });
+
+    customColorInput.addEventListener('input', (e) => {
+      setBrandColor(e.target.value);
+    });
+
+    // Helper functions for dynamic hex color adjust
+    function adjustColorBrightness(hex, percent) {
+      let num = parseInt(hex.replace('#',''), 16),
+          amt = Math.round(2.55 * percent),
+          R = (num >> 16) + amt,
+          G = (num >> 8 & 0x00FF) + amt,
+          B = (num & 0x0000FF) + amt;
+      return '#' + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255)).toString(16).slice(1);
+    }
+    function hexToRgba(hex, opacity) {
+      let c = hex.replace('#','');
+      if (c.length === 3) c = c.split('').map(x=>x+x).join('');
+      let num = parseInt(c, 16);
+      return `rgba(${(num>>16)&255}, ${(num>>8)&255}, ${num&255}, ${opacity})`;
+    }
+
     /* ── Header shadow ───────────────────────── */
     const hdr = document.getElementById('site-header');
     window.addEventListener('scroll', () => {
