@@ -406,7 +406,7 @@
       line-height: 1;
     }
     .stat-num span {
-      color: #ff5500;
+      color: var(--brand-primary);
     }
 
     /* ── LOGO MARQUEE ──────────────────────────────────── */
@@ -432,14 +432,14 @@
       transition: opacity .2s;
       filter: grayscale(1);
     }
-    .logo-item:hover { opacity: 1; filter: grayscale(0); }
-    .logo-item img { height: 28px; width: auto; object-fit: contain; }
+    .logo-item:hover .logo-text { color: var(--brand-primary); }
     .logo-text {
       font-size: 15px;
       font-weight: 800;
       letter-spacing: -0.01em;
       color: #333;
       white-space: nowrap;
+      transition: color .2s;
     }
 
     @keyframes marquee {
@@ -483,6 +483,8 @@
       border-radius: 50%;
       filter: blur(60px);
       opacity: 0.75;
+      background: radial-gradient(ellipse, var(--brand-primary) 0%, var(--brand-hover) 60%, transparent 100%);
+      transition: background 0.4s ease;
     }
 
     .featured-brand-name {
@@ -608,7 +610,7 @@
     .proj-card-cat {
       font-size: 11px;
       font-weight: 700;
-      color: #ff5500;
+      color: var(--brand-primary);
       letter-spacing: .07em;
       text-transform: uppercase;
       margin-bottom: 6px;
@@ -627,7 +629,7 @@
     .proj-card-link {
       font-size: 12px;
       font-weight: 600;
-      color: #ff5500;
+      color: var(--brand-primary);
       display: inline-flex;
       align-items: center;
       gap: 4px;
@@ -676,7 +678,7 @@
     .about-num {
       font-size: 12px;
       font-weight: 800;
-      color: #ff5500;
+      color: var(--brand-primary);
       padding-top: 2px;
       flex-shrink: 0;
     }
@@ -724,7 +726,7 @@
     .svc-num {
       font-size: 12px;
       font-weight: 700;
-      color: #ff5500;
+      color: var(--brand-primary);
       letter-spacing: .05em;
     }
     .svc-name {
@@ -733,7 +735,7 @@
       color: #fff;
     }
     .svc-arrow {
-      color: #ff5500;
+      color: var(--brand-primary);
       font-size: 18px;
       transition: transform .2s;
     }
@@ -790,7 +792,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #ff5500;
+      background: var(--brand-primary);
       color: #fff;
       font-size: 14px;
       font-weight: 700;
@@ -798,7 +800,7 @@
       border-radius: 100px;
       transition: background .2s, transform .2s;
     }
-    .btn-orange:hover { background: #e64c00; transform: translateY(-2px); }
+    .btn-orange:hover { background: var(--brand-hover); transform: translateY(-2px); }
 
     /* QR Code Card */
     .cta-qr-card {
@@ -818,7 +820,7 @@
     }
     .cta-qr-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(255,85,0,0.5);
+      border-color: var(--brand-primary);
     }
     .cta-qr-img {
       width: 150px;
@@ -1672,9 +1674,17 @@
     function setBrandColor(color) {
       document.documentElement.style.setProperty('--brand-primary', color);
       // Generate hover color (slightly darker) and shadow
-      document.documentElement.style.setProperty('--brand-hover', adjustColorBrightness(color, -15));
-      document.documentElement.style.setProperty('--brand-shadow', hexToRgba(color, 0.4));
+      const hoverColor = adjustColorBrightness(color, -15);
+      const shadowColor = hexToRgba(color, 0.35);
+      document.documentElement.style.setProperty('--brand-hover', hoverColor);
+      document.documentElement.style.setProperty('--brand-shadow', shadowColor);
       
+      // Dynamic updates for gradients & inline elements
+      const blob = document.querySelector('.featured-blob');
+      if (blob) {
+        blob.style.background = `radial-gradient(ellipse, ${color} 0%, ${hoverColor} 60%, transparent 100%)`;
+      }
+
       currentPaletteDot.style.background = color;
       currentPaletteDot.style.boxShadow = `0 0 10px ${color}`;
       customColorInput.value = color;
