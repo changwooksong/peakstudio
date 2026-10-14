@@ -32,6 +32,36 @@ const portfolioData = [
   },
   {
     category: "뷰티",
+    title: "[최초공개] 엠보·통증 걱정없이 피부 속 타격! 스킨부스터를 집에서",
+    desc: "바늘과 통증 걱정 없이 피부 속 깊이 침투하는 초정밀 타격 샷! 8MHz 고주파와 EP 흡수 기술",
+    img: "https://cdn-funding-public.wadiz.io/studio/images/2026/10/06/3cc7a61b-b0a9-4938-b466-3eae22296a67.jpeg",
+    url: "https://www.wadiz.io/web/wcomingsoon/rwd/424419",
+    funding: "오픈 예정",
+    rating: "5.0",
+    rank: "뷰티 디바이스 실시간 1위",
+    strategy: [
+      "8MHz 고주파 + EP 메디컬 스킨부스터 핵심 기술 시각화",
+      "무통증 피부 침투 메커니즘을 보여주는 3D 그래픽 연출",
+      "에스테틱 VIP 케어를 집에서 경험하는 홈케어 스토리텔링"
+    ]
+  },
+  {
+    category: "뷰티",
+    title: "[1만원대 고데기] 바로볼륨 UP! 바데니고 버터스틱 초미니 무선 고데기",
+    desc: "초미니 초경량 초간편 바데니고 버터스틱 미니 고데기 출시!",
+    img: "https://cdn3.wadiz.kr/studio/images/2026/05/27/2d421b0f-ba51-4408-ad88-2003fece5cd5.jpeg",
+    url: "https://www.wadiz.kr/web/campaign/detail/406128",
+    funding: "1.2억+",
+    rating: "4.9",
+    rank: "헤어케어 실시간 1위",
+    strategy: [
+      "초미니 무선 휴대성과 파우치 쏙 컴팩트 사이즈 강조",
+      "단 3초 만에 뿌리 볼륨을 살리는 비포/애프터 영상 연출",
+      "1만원대 압도적 가성비와 무선 배터리 안전성 검증"
+    ]
+  },
+  {
+    category: "뷰티",
     title: "[1,200RPM] 발각질 고민 종결! 속도,구성,가격까지 모두 국내 유일",
     desc: "국내 최고 속도 1200RPM, 고성능 3세대 전동 풋 글라인더",
     img: "https://cdn3.wadiz.kr/studio/images/2025/09/25/47eb2e40-8504-4648-a943-2838cfd501cf.jpeg",
@@ -58,6 +88,36 @@ const portfolioData = [
       "미국 HSN 홈쇼핑 매진 대기록 스토리텔링 도입",
       "고함량 콜라겐 & 펩타이드 흡수율 시험 시각화",
       "고급스러운 에스테틱 브랜드 이미지의 톤앤매너 구축"
+    ]
+  },
+  {
+    category: "푸드",
+    title: "[앵콜] 탈모약 고민이라면 득모 체질 개선부터 | 리포셀 N큐샷",
+    desc: "과학적으로 설계된 득모 성분을 한 번에, 탈모약 대신 걱정 없는 간편 케어 N큐샷!",
+    img: "https://cdn3.wadiz.kr/studio/images/2026/07/29/46165aca-6eb2-4ce6-8f4e-0f39d90d7323.jpeg",
+    url: "https://www.wadiz.kr/web/wcomingsoon/rwd/411723",
+    funding: "2.3억+ (오픈 예정)",
+    rating: "4.9",
+    rank: "이너뷰티 실시간 1위",
+    strategy: [
+      "과학적 배합 성분 데이터 기반 신뢰도 중심 레이아웃",
+      "약 복용 부담을 덜어주는 액상 앰플 이너뷰티 포지셔닝",
+      "모발 생체 주기 임상 근거 시각 인포그래픽 설계"
+    ]
+  },
+  {
+    category: "푸드",
+    title: "[주류대상 수상] 이렇게 예쁜 전통주봤어? 파티, 선물할때 나는 미홍!",
+    desc: "2026 한국 주류대상 대상을 수상한 미홍 탁주 와디즈 신제품 살균탁주",
+    img: "https://cdn3.wadiz.kr/studio/images/2026/05/06/398af659-d7b9-4d3b-aff0-4199919231f1.jpeg",
+    url: "https://www.wadiz.io/web/campaign/detail/398261",
+    funding: "1.8억+",
+    rating: "4.9",
+    rank: "전통주 펀딩 1위",
+    strategy: [
+      "한국 주류대상 대상 수상 이력과 프리미엄 브랜딩",
+      "감각적인 핑크빛 패키지 무드컷 및 선물 패키지 연출",
+      "파티, 피크닉, 청첩장 모임 등 라이프스타일 씬 제안"
     ]
   },
   {
@@ -122,6 +182,21 @@ const portfolioData = [
   },
   {
     category: "테크가전",
+    title: "여기 얼음동굴 아니죠? | 부드럽지만 소름 돋게 시원한 손풍기 등장!",
+    desc: "얼음동굴처럼 차가운 바람을 뿜는 바데니고 에어허그 쿨! 100단 풍속 조절",
+    img: "https://cdn3.wadiz.kr/studio/images/2026/05/04/a18b9236-1e42-462b-8d2c-34d01644a5ff.jpeg",
+    url: "https://www.wadiz.kr/web/campaign/detail/396755",
+    funding: "2.1억+",
+    rating: "4.9",
+    rank: "휴대용 선풍기 1위",
+    strategy: [
+      "초고속 모터와 냉각 터보 바람 성능 비교 테스트 시각화",
+      "100단계 정밀 풍속 제어 디스플레이 UI 강조",
+      "초경량 접이식 거치 아웃도어 라이프스타일 촬영"
+    ]
+  },
+  {
+    category: "테크가전",
     title: "[두유 단 20분] 무소음 두유제조기 등장! 이 블렌더는 새벽에 돌립니다",
     desc: "35db 사무실 소음보다 적은 무소음 블렌더",
     img: "https://cdn3.wadiz.kr/studio/images/2024/04/29/ac2b8742-eb8e-477b-9ef2-e53ba83b07f5.jpeg",
@@ -133,6 +208,36 @@ const portfolioData = [
       "35db 도서관 수준 저소음을 보여주는 소음 측정 비교 테스트 연출",
       "두유, 죽, 이유식 등 20분 쾌속 조리 기능 영상 상세 설명",
       "주방 인테리어를 돋보이게 하는 모던 가전 톤앤매너 매칭"
+    ]
+  },
+  {
+    category: "테크가전",
+    title: "[8만원대] 환기안되는장마철 서큘레이터로 냉방비 잡고 공기순환까지 에어핏",
+    desc: "노마진, 에어핏 보이스 음성인식 서큘레이터 출시",
+    img: "https://cdn3.wadiz.kr/studio/images/2026/07/01/1c4a802c-6175-4d5f-b1d8-29cc0b04a0bf.jpeg",
+    url: "https://www.wadiz.io/web/campaign/detail/410148",
+    funding: "1.4억+",
+    rating: "4.8",
+    rank: "냉방가전 상위권",
+    strategy: [
+      "음성인식 제어의 편리성을 보여주는 리얼 일상 시연 연출",
+      "BLDC 모터의 초저전력 및 360도 입체 순환 풍량 데이터 입증",
+      "8만원대 압도적 가격 파괴 포인트 브랜딩"
+    ]
+  },
+  {
+    category: "여행레저",
+    title: "[전객실 남한강뷰] 호텔 내 수영장에서 즐기는 여름 휴가, 양평 리플 호텔",
+    desc: "객실 내 수영장과 양평 남한강변을 전객실에서 즐길 수 있는 양평 리플 부티크 호텔",
+    img: "https://cdn3.wadiz.kr/studio/images/2026/03/12/3673f8b0-8eb1-4d1a-85b4-7b98a3915837.jpeg",
+    url: "https://www.wadiz.kr/web/wcomingsoon/rwd/410176",
+    funding: "4.5억+ (오픈 예정)",
+    rating: "4.9",
+    rank: "호텔/스테이 실시간 1위",
+    strategy: [
+      "전객실 남한강 리버뷰와 개별 풀빌라 감성 영상 기획",
+      "얼리버드 숙박권 한정 프로모션 혜택 강조",
+      "프라이빗 힐링을 극대화한 건축 및 인테리어 화보 촬영"
     ]
   },
   {
@@ -242,6 +347,21 @@ const portfolioData = [
   },
   {
     category: "홈리빙",
+    title: "강남 조리원의 VIP 케어를 집에서 [프리미엄 산후 회복 디바이스]",
+    desc: "산후 회복을 위한 PBM 기술 하이퍼케어, 집에서도 편하게 회복 관리",
+    img: "https://cdn3.wadiz.kr/studio/images/2026/04/27/f95e29ba-7a39-47ee-a1bd-23f040ef0d49.jpeg",
+    url: "https://www.wadiz.io/web/campaign/detail/398959",
+    funding: "3.5억+",
+    rating: "4.9",
+    rank: "홈케어 디바이스 1위",
+    strategy: [
+      "강남 프리미엄 산후조리원 도입 PBM 광선 테라피 원리 소개",
+      "산모의 통증과 회복 고민을 깊이 있게 공감하는 카피라이팅",
+      "가정 내 안전하고 편안한 사용성을 직관적으로 전달"
+    ]
+  },
+  {
+    category: "홈리빙",
     title: "하루 딱 10분만! 천국의계단과 탄다 사이클 AI앱으로 급찐살 삭제",
     desc: "홈트 앱 탄다 사이클이 직접 천국의 계단까지 만들었습니다",
     img: "https://cdn3.wadiz.kr/studio/images/2025/09/30/506ae7a9-0878-4b4c-8c17-dcf15c0a5746.jpeg",
@@ -313,6 +433,36 @@ const portfolioData = [
       "가평 자라섬 전체 캠핑 사이트 스케일 및 주요 밴드 라인업 기획",
       "얼리버드 한정 혜택 펀딩 가격 설계 및 타켓층 맞춤 포스터 비주얼",
       "현장 어트랙션 및 부스 위치 정보 전달에 최적화된 모던 레이아웃"
+    ]
+  },
+  {
+    category: "자동차",
+    title: "이거 하나면 X플릭스에 너튜브까지? 내차를 스마트TV로, CINEMA",
+    desc: "뛰어난 성능과 감각적 UI, 합리적 가격의 파인드라이브 시네마",
+    img: "https://cdn3.wadiz.kr/studio/images/2026/06/14/211805e8-7811-48cc-a659-d3fd366880a7.jpeg",
+    url: "https://www.wadiz.io/web/campaign/detail/408890",
+    funding: "3.8억+",
+    rating: "4.9",
+    rank: "스마트모빌리티 1위",
+    strategy: [
+      "순정 내비게이션 화면을 스마트 OTT로 변환하는 플러그앤플레이 연출",
+      "파인드라이브의 독자적 UI 안정성과 렉 없는 스트리밍 시연",
+      "차박, 장거리 운전, 대기 시간 활용 씬 중심 감각적 영상 기획"
+    ]
+  },
+  {
+    category: "자동차",
+    title: "[풀스펙 끝판왕 전기자전거] 코모바이크 울트라9 출시!",
+    desc: "CES2024 혁신상 수상 허브리스 휠을 적용한 끝판왕 전기자전거",
+    img: "https://cdn3.wadiz.kr/studio/images/2026/06/05/431ec662-88b1-4db4-bfac-bdc23bb52b2b.jpeg",
+    url: "https://www.wadiz.kr/web/campaign/detail/405861",
+    funding: "4.2억+",
+    rating: "4.9",
+    rank: "e-모빌리티 1위",
+    strategy: [
+      "CES 혁신상 수상 허브리스 미래지향적 디자인 비주얼 극대화",
+      "강력한 모터 토크와 대용량 배터리의 주행 거리 실측 테스트",
+      "도심 출퇴근 및 레저 환경을 아우르는 하이엔드 감성 룩북"
     ]
   },
   {
