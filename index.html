@@ -998,8 +998,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 14px;
-      min-height: 28px;
+      margin-bottom: 12px;
+      min-height: 32px;
+    }
+    .pkg-emoji {
+      font-size: 26px;
+      line-height: 1;
     }
     .pkg-period-badge {
       display: inline-flex;
@@ -1026,29 +1030,58 @@
       letter-spacing: .02em;
     }
     .pkg-title {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
       color: #111;
       letter-spacing: -0.03em;
-      margin-bottom: 12px;
-      line-height: 1.3;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .pkg-summary {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 18px;
+      line-height: 1.45;
+      font-weight: 500;
     }
     .pkg-target-box {
-      background: #f8f9fb;
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-size: 12.5px;
-      color: #555;
-      line-height: 1.5;
+      background: #f8fafc;
+      border-radius: 14px;
+      padding: 14px 16px;
       margin-bottom: 24px;
       border: 1px solid #edf0f5;
+      flex: 1;
     }
     .pkg-target-label {
       font-weight: 700;
-      color: #111;
+      color: #111827;
       display: block;
-      margin-bottom: 3px;
-      font-size: 11.5px;
+      margin-bottom: 10px;
+      font-size: 12.5px;
+      letter-spacing: -0.01em;
+    }
+    .pkg-deliverable-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .pkg-deliverable-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 13px;
+      color: #4b5563;
+      line-height: 1.45;
+    }
+    .pkg-deliverable-list li svg {
+      width: 12px;
+      height: 12px;
+      stroke: #111827;
+      margin-top: 3px;
+      flex-shrink: 0;
     }
     .pkg-price-row {
       margin-bottom: 24px;
@@ -2647,124 +2680,131 @@
 
       <!-- 핵심 세트 라인업 가격표 (Core Pricing Packages) -->
       <div class="pricing-cards-grid reveal">
-        <!-- ① [5일 완성] 실속세트 -->
+        <!-- ① [5일 완성] 브랜드 런치 실속 세트 -->
         <div class="pricing-pkg-card">
           <div class="pkg-badge-wrapper">
-            <span class="pkg-period-badge">⚡ 5일 완성</span>
+            <span class="pkg-emoji">🍔</span>
+            <span class="pkg-highlight-badge">실속 추천</span>
           </div>
-          <h3 class="pkg-title">실속세트</h3>
+          <h3 class="pkg-title">[5일 완성] 브랜드 런치 실속 세트</h3>
+          <p class="pkg-summary">사진 촬영 + 상세(1.5만px) + 수정횟수 1회</p>
           <div class="pkg-target-box">
-            <span class="pkg-target-label">💡 추천 대상 플랫폼</span>
-            쿠팡 / 네이버 스마트스토어 등 빠른 등록과 실속 있는 오픈이 필요한 플랫폼
+            <span class="pkg-target-label">🎁 이 세트 제공 결과물</span>
+            <ul class="pkg-deliverable-list">
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>쿠팡/네이버 등의 빠른 등록이 필요한 플랫폼</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>브랜드 시나리오 &amp; 상세페이지 기획</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>상세페이지 제작 (15,000px 기준)</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>사진 촬영 + GIF (10개 이하)</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>수정횟수 1회</span>
+              </li>
+            </ul>
           </div>
           <div class="pkg-price-row">
             <div>
-              <span class="pkg-price">990,000</span><span class="pkg-price-unit">원</span>
+              <span class="pkg-price">990,000</span><span class="pkg-price-unit">원부터</span>
             </div>
             <div class="pkg-price-sub">(VAT 별도)</div>
           </div>
-          <div class="pkg-features-title">주요 구성</div>
-          <ul class="pkg-features-list">
-            <li class="pkg-feature-item">
-              <span class="pkg-check-icon"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span>브랜드 시나리오 &amp; 기획</span>
-            </li>
-            <li class="pkg-feature-item">
-              <span class="pkg-check-icon"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span>상세페이지 제작 (20,000px)</span>
-            </li>
-            <li class="pkg-feature-item">
-              <span class="pkg-check-icon"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span>제품 사진 촬영</span>
-            </li>
-            <li class="pkg-feature-item">
-              <span class="pkg-check-icon"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span>수정횟수 1회 제공</span>
-            </li>
-          </ul>
           <a href="https://estimate.peakstudio.co.kr" target="_blank" rel="noopener noreferrer" class="pkg-btn pkg-btn-secondary">
             실속세트 견적 계산하기 →
           </a>
         </div>
 
-        <!-- ② [10일 완성] 브랜드 런치 세트 [BEST 🚀] -->
+        <!-- ② [10일 완성] 브랜드 런치 기본 세트 [BEST 🚀] -->
         <div class="pricing-pkg-card featured">
           <div class="pkg-badge-wrapper">
-            <span class="pkg-period-badge">✨ 10일 완성</span>
+            <span class="pkg-emoji">🔥</span>
             <span class="pkg-highlight-badge">BEST 🚀</span>
           </div>
-          <h3 class="pkg-title">브랜드 런치 세트</h3>
+          <h3 class="pkg-title">[10일 완성] 브랜드 런치 기본 세트</h3>
+          <p class="pkg-summary">사진 촬영 + 상세(2만px) + 수정횟수 2회</p>
           <div class="pkg-target-box">
-            <span class="pkg-target-label">💡 추천 대상 플랫폼</span>
-            올리브영, 와디즈, 자사몰 등 브랜드 비주얼 강점을 극대화해야 하는 플랫폼
+            <span class="pkg-target-label">🎁 이 세트 제공 결과물</span>
+            <ul class="pkg-deliverable-list">
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>쿠팡/네이버 등의 빠른 등록이 필요한 플랫폼</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>브랜드 시나리오 &amp; 상세페이지 기획</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>상세페이지 제작 (20,000px 기준)</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>사진 촬영 + GIF (12개 이하)</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>수정횟수 2회</span>
+              </li>
+            </ul>
           </div>
           <div class="pkg-price-row">
             <div>
-              <span class="pkg-price">1,290,000</span><span class="pkg-price-unit">원</span>
+              <span class="pkg-price">1,290,000</span><span class="pkg-price-unit">원부터</span>
             </div>
             <div class="pkg-price-sub">(VAT 별도)</div>
           </div>
-          <div class="pkg-features-title">주요 구성</div>
-          <ul class="pkg-features-list">
-            <li class="pkg-feature-item">
-              <span class="pkg-check-icon"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span>브랜드 시나리오 &amp; 기획</span>
-            </li>
-            <li class="pkg-feature-item">
-              <span class="pkg-check-icon"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span>상세페이지 제작 (20,000px)</span>
-            </li>
-            <li class="pkg-feature-item">
-              <span class="pkg-check-icon"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span>사진 + GIF 촬영 (연출/움짤)</span>
-            </li>
-            <li class="pkg-feature-item">
-              <span class="pkg-check-icon"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span>수정횟수 1회 제공 (40,000px 이상은 최대 2회)</span>
-            </li>
-          </ul>
           <a href="https://estimate.peakstudio.co.kr" target="_blank" rel="noopener noreferrer" class="pkg-btn pkg-btn-primary">
-            브랜드 런치세트 견적 계산하기 →
+            기본세트 견적 계산하기 →
           </a>
         </div>
 
         <!-- ③ 디너세트 · 프리미엄 풀코스 [PREMIUM 👑] -->
         <div class="pricing-pkg-card">
           <div class="pkg-badge-wrapper">
-            <span class="pkg-period-badge">👑 PREMIUM</span>
+            <span class="pkg-emoji">👑</span>
+            <span class="pkg-highlight-badge">PREMIUM</span>
           </div>
           <h3 class="pkg-title">디너세트 · 프리미엄 풀코스</h3>
+          <p class="pkg-summary">사진 + GIF 촬영 + 상세(40,000px) + 수정횟수 2회</p>
           <div class="pkg-target-box">
-            <span class="pkg-target-label">💡 추천 대상 플랫폼</span>
-            대형 런칭, 와디즈/텀블벅 메인 펀딩, 플래그십 브랜드 구축
+            <span class="pkg-target-label">🎁 이 세트 제공 결과물</span>
+            <ul class="pkg-deliverable-list">
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>브랜드 시나리오 &amp; 상세페이지 기획</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>상세페이지 제작 (40,000px 기준)</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>사진 + GIF 촬영 (20개 이하)</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>수정횟수 2회</span>
+              </li>
+            </ul>
           </div>
           <div class="pkg-price-row">
             <div>
-              <span class="pkg-price">2,490,000</span><span class="pkg-price-unit">원</span>
+              <span class="pkg-price">2,490,000</span><span class="pkg-price-unit">원부터</span>
             </div>
             <div class="pkg-price-sub">(VAT 별도)</div>
           </div>
-          <div class="pkg-features-title">주요 구성</div>
-          <ul class="pkg-features-list">
-            <li class="pkg-feature-item">
-              <span class="pkg-check-icon"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span>브랜드 시나리오 &amp; 프리미엄 기획</span>
-            </li>
-            <li class="pkg-feature-item">
-              <span class="pkg-check-icon"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span>상세페이지 제작 (최대 40,000px 무료 확장)</span>
-            </li>
-            <li class="pkg-feature-item">
-              <span class="pkg-check-icon"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span>사진 촬영 + 영상 풀촬영</span>
-            </li>
-            <li class="pkg-feature-item">
-              <span class="pkg-check-icon"><svg viewBox="0 0 12 12"><path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span>수정횟수 2회 제공</span>
-            </li>
-          </ul>
           <a href="https://estimate.peakstudio.co.kr" target="_blank" rel="noopener noreferrer" class="pkg-btn pkg-btn-secondary">
-            프리미엄 풀코스 견적 계산하기 →
+            디너세트 견적 계산하기 →
           </a>
         </div>
       </div>
