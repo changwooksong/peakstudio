@@ -217,9 +217,70 @@
     }
     .sticky-btn-secondary:hover { background: var(--brand-primary); color: #fff; }
 
-    /* ── HERO SLIDER ───────────────────────────────────── */
-    #hero {
+    /* ── VIDEO HERO SECTION ────────────────────────────── */
+    #video-hero {
       margin-top: 60px;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      overflow: hidden;
+      background: #0d0d0d;
+    }
+    .video-hero-media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .video-hero-cta-wrap {
+      position: absolute;
+      left: 5.83%;
+      bottom: 26%;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .video-hero-kakao-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FEE500;
+      color: #191919;
+      font-size: clamp(14px, 1.05vw, 17px);
+      font-weight: 800;
+      padding: clamp(12px, 1vw, 16px) clamp(22px, 1.8vw, 32px);
+      border-radius: 100px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 4px 16px rgba(254, 229, 0, 0.28);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      transition: transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s cubic-bezier(.4,0,.2,1), background .2s;
+    }
+    .video-hero-kakao-btn:hover {
+      background: #fada0a;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45), 0 6px 22px rgba(254, 229, 0, 0.42);
+    }
+    .video-hero-kakao-btn svg {
+      width: clamp(18px, 1.25vw, 22px);
+      height: clamp(18px, 1.25vw, 22px);
+      fill: #191919;
+      flex-shrink: 0;
+    }
+    .video-hero-kakao-btn .btn-arrow {
+      font-weight: 800;
+      margin-left: 2px;
+      transition: transform .2s;
+    }
+    .video-hero-kakao-btn:hover .btn-arrow {
+      transform: translateX(3px);
+    }
+
+    /* ── HERO SLIDER (당분간 미노출) ───────────────────── */
+    #hero {
+      display: none;
+      margin-top: 0;
       width: 100%;
       height: calc(100vh - 60px);
       min-height: 420px;
@@ -1269,12 +1330,6 @@
       font-size: 12px;
       color: rgba(255,255,255,0.35);
     }
-    .testimonial-placeholder-note {
-      text-align: center;
-      margin-top: 36px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.25);
-    }
 
     /* ── FAQ SECTION ───────────────────────────────────── */
     #faq {
@@ -1501,8 +1556,11 @@
       .for-whom-cards { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
+      body { padding-bottom: 72px; }
       #site-header { padding: 0 16px; height: 56px; }
-      #hero { margin-top: 56px; height: 58vh; min-height: 340px; max-height: 480px; }
+      #video-hero { margin-top: 56px; aspect-ratio: 4 / 5; }
+      .video-hero-cta-wrap { display: none; }
+      #hero { margin-top: 0; height: 58vh; min-height: 340px; max-height: 480px; }
       .panel-img { object-fit: cover; object-position: center 35%; }
       .panel-main-text { bottom: 20px; left: 20px; right: 20px; }
       .panel-eyebrow { font-size: 11px; }
@@ -1516,8 +1574,29 @@
       .h-nav a { font-size: 13px; }
       .h-cta { display: none; }
       .floating-kakao-cta { display: none; }
-      #sticky-cta-bar { padding: 10px 16px; }
-      .sticky-btn-primary, .sticky-btn-secondary { font-size: 13px; }
+      #sticky-cta-bar {
+        transform: translateY(0) !important;
+        padding: 10px 14px;
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+      }
+      .sticky-btn-primary, .sticky-btn-secondary {
+        font-size: 13px;
+        padding: 11px 12px;
+        letter-spacing: -0.01em;
+      }
+      .sticky-btn-secondary {
+        background: #FEE500;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        color: #191919;
+      }
+      .sticky-btn-secondary:hover {
+        background: #fada0a;
+        color: #191919;
+      }
       .testimonials-grid { grid-template-columns: 1fr; }
       .cta-qr-group { display: none; }
     }
@@ -1552,8 +1631,33 @@
     </a>
   </header>
 
-  <!-- ═══ HERO SLIDER ═══════════════════════════════════ -->
-  <section id="hero" aria-label="메인 슬라이드">
+  <!-- ═══ VIDEO HERO ════════════════════════════════════ -->
+  <section id="video-hero" aria-label="피크 스튜디오 메인 히어로 영상">
+    <video
+      id="heroVideo"
+      class="video-hero-media"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster="hero_pc_poster.jpg"
+    >
+      <source src="hero_mobile.mp4" type="video/mp4" media="(max-width: 768px)" />
+      <source src="hero_pc.mp4" type="video/mp4" />
+    </video>
+    <div class="video-hero-cta-wrap">
+      <a href="http://pf.kakao.com/_ZrTbX/chat" target="_blank" rel="noopener noreferrer"
+         class="video-hero-kakao-btn" id="video-hero-cta-kakao" aria-label="카카오 비즈 상담 바로 가기">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682 2.545-.78 2.94-.122.49.18.483.377.352.155-.103 2.467-1.68 3.468-2.366.544.078 1.1.12 1.665.12 4.97 0 9-3.186 9-7.115S16.97 3 12 3z"/></svg>
+        <span>카카오 비즈 상담 바로 가기</span>
+        <span class="btn-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ HERO SLIDER (당분간 미노출) ═══════════════════ -->
+  <section id="hero" aria-label="메인 슬라이드" hidden>
     <div class="hero-slides" id="heroSlides">
 
       <!-- Slide 1 -->
@@ -1562,7 +1666,7 @@
           <div class="panel">
             <img class="panel-img"
               src="https://cdn3.wadiz.kr/studio/images/2025/09/16/19c395f5-56b4-4f15-a2b2-d7dcc760b7f5.jpeg"
-              alt="써마쎄라 페이스튠 크라우드펀딩 상세페이지" />
+              alt="써마쎄라 페이스튠 크라우드펀딩 상세페이지" loading="lazy" />
             <div class="panel-overlay"></div>
             <div class="panel-main-text">
               <p class="panel-eyebrow">예쁘기만 한 상세페이지는 만들지 않습니다.</p>
@@ -1584,7 +1688,7 @@
           <div class="panel">
             <img class="panel-img"
               src="https://cdn3.wadiz.kr/studio/images/2025/01/20/de0f5bc5-97bb-470a-b9fe-c456ee802905.jpeg"
-              alt="써마쎄라 HIFU" />
+              alt="써마쎄라 HIFU" loading="lazy" />
             <div class="panel-overlay"></div>
             <div class="panel-side-text">
               <p class="panel-side-label">사용 4주 후<br/>경피 수분 향상</p>
@@ -1594,7 +1698,7 @@
           <div class="panel">
             <img class="panel-img"
               src="https://cdn3.wadiz.kr/studio/images/2025/09/25/47eb2e40-8504-4648-a943-2838cfd501cf.jpeg"
-              alt="전동 풋 글라인더" />
+              alt="전동 풋 글라인더" loading="lazy" />
             <div class="panel-overlay"></div>
             <div class="panel-side-text">
               <p class="panel-side-label">1,200RPM<br/>발각질 고민 종결</p>
@@ -1610,7 +1714,7 @@
           <div class="panel">
             <img class="panel-img"
               src="https://cdn3.wadiz.kr/studio/images/2025/08/25/c0a444f6-48ac-483c-a4c2-28e656d6e4ab.jpeg"
-              alt="천작환" />
+              alt="천작환" loading="lazy" />
             <div class="panel-overlay"></div>
             <div class="panel-main-text">
               <p class="panel-eyebrow">와디즈 공식 파트너사</p>
@@ -1625,7 +1729,7 @@
           <div class="panel">
             <img class="panel-img"
               src="https://cdn3.wadiz.kr/studio/images/2025/09/09/240098f2-e2b0-4a32-964a-21ce7e678bf7.jpeg"
-              alt="갈비찜" />
+              alt="갈비찜" loading="lazy" />
             <div class="panel-overlay"></div>
             <div class="panel-side-text">
               <p class="panel-side-label">홈쇼핑 1등<br/>6분이면 완성</p>
@@ -1635,7 +1739,7 @@
           <div class="panel">
             <img class="panel-img"
               src="https://cdn3.wadiz.kr/studio/images/2026/01/22/31f71a99-9334-4afa-86f6-2d764a98743e.jpeg"
-              alt="닥터트리 콜라겐" />
+              alt="닥터트리 콜라겐" loading="lazy" />
             <div class="panel-overlay"></div>
             <div class="panel-side-text">
               <p class="panel-side-label">미국 HSN<br/>홈쇼핑 매진</p>
@@ -1651,7 +1755,7 @@
           <div class="panel">
             <img class="panel-img"
               src="https://cdn3.wadiz.kr/studio/images/2025/08/28/e4afd37b-e696-4187-83dc-f6a51b7c73c8.jpeg"
-              alt="TEMPUR 인솔" />
+              alt="TEMPUR 인솔" loading="lazy" />
             <div class="panel-overlay"></div>
             <div class="panel-main-text">
               <p class="panel-eyebrow">자체 촬영 스튜디오 운영</p>
@@ -1666,7 +1770,7 @@
           <div class="panel">
             <img class="panel-img"
               src="https://cdn3.wadiz.kr/studio/images/2025/11/06/43671315-9a33-45da-bd8b-967f8f8337c7.jpeg"
-              alt="코럴리프 가방" />
+              alt="코럴리프 가방" loading="lazy" />
             <div class="panel-overlay"></div>
             <div class="panel-side-text">
               <p class="panel-side-label">와디즈 최초공개<br/>프리미엄 비즈니스백</p>
@@ -1676,7 +1780,7 @@
           <div class="panel">
             <img class="panel-img"
               src="https://cdn3.wadiz.kr/studio/images/2025/12/15/aa84a356-d6cb-4e1b-9782-98783b113b83.jpeg"
-              alt="탄다사이클" />
+              alt="탄다사이클" loading="lazy" />
             <div class="panel-overlay"></div>
             <div class="panel-side-text">
               <p class="panel-side-label">저소음 홈트<br/>칼로리 삭제</p>
@@ -2764,7 +2868,6 @@
           </div>
         </div>
       </div>
-      <p class="testimonial-placeholder-note">※ 실제 고객 후기 수집 후 교체 예정입니다.</p>
     </div>
   </section>
 
@@ -2946,14 +3049,15 @@
   </a>
 
   <!-- ═══ STICKY CTA BAR ════════════════════════════════ -->
-  <div id="sticky-cta-bar" aria-label="견적 문의 바로가기">
+  <div id="sticky-cta-bar" aria-label="견적 문의 및 상담 바로가기">
     <a href="https://estimate.peakstudio.co.kr" target="_blank" rel="noopener noreferrer"
        class="sticky-btn-primary" id="sticky-cta-estimate">
-      실시간 견적 계산하기
+      실시간 견적 계산
     </a>
     <a href="http://pf.kakao.com/_ZrTbX/chat" target="_blank" rel="noopener noreferrer"
        class="sticky-btn-secondary" id="sticky-cta-kakao">
-      카카오톡 상담
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682 2.545-.78 2.94-.122.49.18.483.377.352.155-.103 2.467-1.68 3.468-2.366.544.078 1.1.12 1.665.12 4.97 0 9-3.186 9-7.115S16.97 3 12 3z"/></svg>
+      카카오 비즈 상담
     </a>
   </div>
 
@@ -2993,18 +3097,26 @@
     /* ── 동적 연도 ───────────────────────── */
     document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-    /* ── Header shadow ──────────────────── */
+    /* ── Header shadow & Sticky CTA ─────── */
     const hdr = document.getElementById('site-header');
     const stickyCta = document.getElementById('sticky-cta-bar');
 
-    window.addEventListener('scroll', () => {
+    function updateStickyBar() {
       const scrolled = window.scrollY;
       hdr.classList.toggle('shadow', scrolled > 10);
-      // Sticky bar: 100vh 이후 등장
-      stickyCta.classList.toggle('visible', scrolled > window.innerHeight);
-    });
+      if (window.innerWidth <= 768) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.toggle('visible', scrolled > window.innerHeight);
+      }
+    }
+
+    window.addEventListener('scroll', updateStickyBar, { passive: true });
+    window.addEventListener('resize', updateStickyBar);
+    updateStickyBar();
 
     /* ── Hero slider ─────────────────────── */
+    const heroSection = document.getElementById('hero');
     const slides   = document.getElementById('heroSlides');
     const dots     = document.querySelectorAll('#heroDots .dot');
     let current    = 0;
@@ -3012,17 +3124,22 @@
     let autoTimer;
 
     function goSlide(idx) {
+      if (!slides || !total) return;
       current = (idx + total) % total;
       slides.style.transform = `translateX(-${current * 100}%)`;
       dots.forEach((d, i) => d.classList.toggle('active', i === current));
     }
     function startAuto() {
       clearInterval(autoTimer);
-      autoTimer = setInterval(() => goSlide(current + 1), 4500);
+      if (heroSection && !heroSection.hidden && getComputedStyle(heroSection).display !== 'none') {
+        autoTimer = setInterval(() => goSlide(current + 1), 4500);
+      }
     }
 
-    document.getElementById('heroPrev').addEventListener('click', () => { goSlide(current - 1); startAuto(); });
-    document.getElementById('heroNext').addEventListener('click', () => { goSlide(current + 1); startAuto(); });
+    const heroPrevBtn = document.getElementById('heroPrev');
+    const heroNextBtn = document.getElementById('heroNext');
+    if (heroPrevBtn) heroPrevBtn.addEventListener('click', () => { goSlide(current - 1); startAuto(); });
+    if (heroNextBtn) heroNextBtn.addEventListener('click', () => { goSlide(current + 1); startAuto(); });
     dots.forEach(d => d.addEventListener('click', () => { goSlide(+d.dataset.idx); startAuto(); }));
     startAuto();
 
@@ -3137,6 +3254,37 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => ro.observe(el));
 
+    /* ── Responsive Hero Video ──────────── */
+    const heroVideo = document.getElementById('heroVideo');
+    if (heroVideo) {
+      const mqMobile = window.matchMedia('(max-width: 768px)');
+      let activeVideoMode = null;
+
+      function syncHeroVideo() {
+        const nextMode = mqMobile.matches ? 'mobile' : 'pc';
+        if (nextMode === activeVideoMode) return;
+        activeVideoMode = nextMode;
+        const nextSrc = nextMode === 'mobile' ? 'hero_mobile.mp4' : 'hero_pc.mp4';
+        const nextPoster = nextMode === 'mobile' ? 'hero_mobile_poster.jpg' : 'hero_pc_poster.jpg';
+        heroVideo.poster = nextPoster;
+        if (!heroVideo.currentSrc || !heroVideo.currentSrc.endsWith(nextSrc)) {
+          heroVideo.src = nextSrc;
+          heroVideo.load();
+        }
+        const playPromise = heroVideo.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => {});
+        }
+      }
+
+      syncHeroVideo();
+      if (typeof mqMobile.addEventListener === 'function') {
+        mqMobile.addEventListener('change', syncHeroVideo);
+      } else if (typeof mqMobile.addListener === 'function') {
+        mqMobile.addListener(syncHeroVideo);
+      }
+    }
+
     /* ── Conversion Tracking ─────────────── */
     // dataLayer 훅: GA4 또는 GTM과 연동
     // GA4 미설치 시 dataLayer만 심어두고, GTM 연결 시 자동 발화
@@ -3154,7 +3302,7 @@
     });
 
     // 카카오톡 CTA 전체
-    ['hero-cta-kakao','pricing-cta-kakao','sticky-cta-kakao','cta-kakao',
+    ['video-hero-cta-kakao','hero-cta-kakao','pricing-cta-kakao','sticky-cta-kakao','cta-kakao',
      'floating-kakao'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.addEventListener('click', () => trackCTA('cta_kakao_click', id));
