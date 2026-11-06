@@ -232,6 +232,12 @@
       object-fit: cover;
       display: block;
     }
+    .video-hero-media.video-mobile {
+      display: none;
+    }
+    .video-hero-media.video-pc {
+      display: block;
+    }
     .video-hero-cta-wrap {
       position: absolute;
       left: 5.83%;
@@ -1559,6 +1565,8 @@
       body { padding-bottom: 72px; }
       #site-header { padding: 0 16px; height: 56px; }
       #video-hero { margin-top: 56px; aspect-ratio: 4 / 5; }
+      .video-hero-media.video-mobile { display: block; }
+      .video-hero-media.video-pc { display: none; }
       .video-hero-cta-wrap { display: none; }
       #hero { margin-top: 0; height: 58vh; min-height: 340px; max-height: 480px; }
       .panel-img { object-fit: cover; object-position: center 35%; }
@@ -1633,19 +1641,32 @@
 
   <!-- ═══ VIDEO HERO ════════════════════════════════════ -->
   <section id="video-hero" aria-label="피크 스튜디오 메인 히어로 영상">
+    <!-- 모바일 비디오 (768px 이하) -->
     <video
-      id="heroVideo"
-      class="video-hero-media"
+      id="heroVideoMobile"
+      class="video-hero-media video-mobile"
       autoplay
       muted
       loop
       playsinline
+      webkit-playsinline
+      preload="auto"
+      poster="hero_mobile_poster.jpg"
+      src="hero_mobile.mp4"
+    ></video>
+    <!-- PC 비디오 (769px 이상) -->
+    <video
+      id="heroVideoPc"
+      class="video-hero-media video-pc"
+      autoplay
+      muted
+      loop
+      playsinline
+      webkit-playsinline
       preload="auto"
       poster="hero_pc_poster.jpg"
-    >
-      <source src="hero_mobile.mp4" type="video/mp4" media="(max-width: 768px)" />
-      <source src="hero_pc.mp4" type="video/mp4" />
-    </video>
+      src="hero_pc.mp4"
+    ></video>
     <div class="video-hero-cta-wrap">
       <a href="http://pf.kakao.com/_ZrTbX/chat" target="_blank" rel="noopener noreferrer"
          class="video-hero-kakao-btn" id="video-hero-cta-kakao" aria-label="카카오 비즈 상담 바로 가기">
@@ -3254,36 +3275,28 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => ro.observe(el));
 
-    /* ── Responsive Hero Video ──────────── */
-    const heroVideo = document.getElementById('heroVideo');
-    if (heroVideo) {
-      const mqMobile = window.matchMedia('(max-width: 768px)');
-      let activeVideoMode = null;
-
-      function syncHeroVideo() {
-        const nextMode = mqMobile.matches ? 'mobile' : 'pc';
-        if (nextMode === activeVideoMode) return;
-        activeVideoMode = nextMode;
-        const nextSrc = nextMode === 'mobile' ? 'hero_mobile.mp4' : 'hero_pc.mp4';
-        const nextPoster = nextMode === 'mobile' ? 'hero_mobile_poster.jpg' : 'hero_pc_poster.jpg';
-        heroVideo.poster = nextPoster;
-        if (!heroVideo.currentSrc || !heroVideo.currentSrc.endsWith(nextSrc)) {
-          heroVideo.src = nextSrc;
-          heroVideo.load();
-        }
-        const playPromise = heroVideo.play();
-        if (playPromise && typeof playPromise.catch === 'function') {
-          playPromise.catch(() => {});
-        }
+    /* ── Hero Video Autoplay Assurance ─── */
+    const heroVideos = document.querySelectorAll('.video-hero-media');
+    heroVideos.forEach(v => {
+      v.muted = true;
+      v.defaultMuted = true;
+      const playPromise = v.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {});
       }
+    });
 
-      syncHeroVideo();
-      if (typeof mqMobile.addEventListener === 'function') {
-        mqMobile.addEventListener('change', syncHeroVideo);
-      } else if (typeof mqMobile.addListener === 'function') {
-        mqMobile.addListener(syncHeroVideo);
-      }
+    // iOS 저전력 모드 또는 첫 인터랙션 시 비디오 재생 보장
+    function triggerVideoPlayback() {
+      heroVideos.forEach(v => {
+        if (v.paused && getComputedStyle(v).display !== 'none') {
+          v.play().catch(() => {});
+        }
+      });
     }
+    ['touchstart', 'touchend', 'click', 'scroll'].forEach(evt => {
+      window.addEventListener(evt, triggerVideoPlayback, { once: true, passive: true });
+    });
 
     /* ── Conversion Tracking ─────────────── */
     // dataLayer 훅: GA4 또는 GTM과 연동
